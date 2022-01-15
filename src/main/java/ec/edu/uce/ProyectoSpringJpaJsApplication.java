@@ -5,19 +5,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import ec.edu.uce.modelo.Equipo;
-import ec.edu.uce.modelo.Estudiante;
-import ec.edu.uce.modelo.GuiaTelefonica;
-import ec.edu.uce.modelo.Hotel;
-import ec.edu.uce.modelo.Libro;
-import ec.edu.uce.modelo.Materia;
 import ec.edu.uce.modelo.Paciente;
-import ec.edu.uce.modelo.Pelicula;
-import ec.edu.uce.modelo.Ropa;
-import ec.edu.uce.modelo.Universidad;
-import ec.edu.uce.modelo.Videojuego;
+import ec.edu.uce.modelo.Receta;
 import ec.edu.uce.service.IEquipoService;
 import ec.edu.uce.service.IEstudianteService;
+import ec.edu.uce.service.IGestorCitaService;
 import ec.edu.uce.service.IGuiaTelefonicaService;
 import ec.edu.uce.service.IHotelService;
 import ec.edu.uce.service.ILibroService;
@@ -63,6 +55,9 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 
 	@Autowired
 	private IVideoJuegoService videojuegoService;
+	
+	@Autowired
+	private IGestorCitaService gestorCitaService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoSpringJpaJsApplication.class, args);
@@ -71,23 +66,40 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
+		
+		//GESTOR SERVICE 
+		Paciente p1= new Paciente();
+		p1.setId(5);
+		p1.setNombre("Juan");
+		p1.setApellido("Guevara");
+		p1.setEdad(50);
+		
+		Receta r1= new Receta();
+		r1.setId(1);
+		r1.setIndicaciones("Guardar reposo 5 semanas");
+		r1.setMedicamentos("Paracetamol");
+		
+		this.gestorCitaService.registrarNuevaConsulta(p1, r1);
+		
+		
+		
 
 		// PACIENTE
-		Paciente paciente1 = new Paciente();
-		paciente1.setId(2);
-		paciente1.setNombre("Stefania");
-		paciente1.setApellido("Arciniega");
-		paciente1.setEdad(22);
-		this.pacienteService.insertarPacienteNuevo(paciente1);
+	/*	Paciente paciente1 = new Paciente();
+		paciente1.setId(4);
+		paciente1.setNombre("Fernanda");
+		paciente1.setApellido("Carrion");
+		paciente1.setEdad(20);
+		//this.pacienteService.insertarPacienteNuevo(paciente1);
+		Paciente p1=this.pacienteService.buscarPacientePorId(2);
+		System.out.println("El paciente que usted esta buscando es: ");
+		System.out.println(p1);
+		//this.pacienteService.actualizarPacienteNuevo(paciente1);
+		//this.pacienteService.borrarPacientePorId(3);
 		
-		Paciente paciente2 = new Paciente();
-		paciente2.setId(3);
-		paciente2.setNombre("Pablo");
-		paciente2.setApellido("Cabrera");
-		paciente2.setEdad(24);
-		this.pacienteService.insertarPacienteNuevo(paciente2);
+		*/
 		
-		
+		/*
 		// Equipo
 		Equipo equipo1 = new Equipo();
 		equipo1.setId(1);
@@ -373,7 +385,7 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 		videojuego3.setModoJuego("Multijugador");
 		videojuego3.setClasificacion("+21");
 		this.videojuegoService.insertarVideojuegoNuevo(videojuego3);
-
+*/
 	}
 
 }
