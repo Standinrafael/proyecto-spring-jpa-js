@@ -18,4 +18,22 @@ public class EquipoServiceImpl implements IEquipoService {
 		this.equipoRepo.insertarEquipo(equipo);
 	}
 
+	@Override
+	public void borrarEquipoPorId(Integer id) {
+		// TODO Auto-generated method stub
+		this.equipoRepo.borrarEquipo(id);
+	}
+
+	@Override
+	public void actualizarEquipoNuevo(Equipo equipo) {
+		// TODO Auto-generated method stub
+		this.equipoRepo.actualizarEquipo(equipo);
+	}
+
+	@Override
+	public Equipo buscarEquipoPorId(Integer id) {
+		// TODO Auto-generated method stub
+		return this.equipoRepo.buscarEquipo(id);
+	}
+
 }

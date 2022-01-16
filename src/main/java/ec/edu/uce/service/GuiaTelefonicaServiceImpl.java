@@ -18,4 +18,22 @@ public class GuiaTelefonicaServiceImpl implements IGuiaTelefonicaService {
 		this.guiaRepo.insertarUsuarioGuiaTelefonica(usuario);
 	}
 
+	@Override
+	public void borrarUsuarioGuiaPorId(Integer id) {
+		// TODO Auto-generated method stub
+		this.guiaRepo.borrarUsuarioGuiaTelefonica(id);
+	}
+
+	@Override
+	public void actualizarUsuarioGuiaNuevo(GuiaTelefonica usuario) {
+		// TODO Auto-generated method stub
+		this.guiaRepo.actualizarUsuarioGuiaTelefonica(usuario);
+	}
+
+	@Override
+	public GuiaTelefonica buscarUsuarioGuiaPorId(Integer id) {
+		// TODO Auto-generated method stub
+		return this.guiaRepo.buscarUsuarioGuiaTelefonica(id);
+	}
+
 }

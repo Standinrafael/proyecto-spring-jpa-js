@@ -19,4 +19,25 @@ public class PeliculaServiceImpl implements IPeliculaService {
 		this.peliculaRepo.insertarPelicula(pelcula);
 	}
 
+
+	@Override
+	public void borrarPeliculaPorId(Integer id) {
+		// TODO Auto-generated method stub
+		this.peliculaRepo.borrarPelicula(id);
+	}
+
+
+	@Override
+	public void actualizarPeliculaNuevo(Pelicula pelicula) {
+		// TODO Auto-generated method stub
+		this.peliculaRepo.actualizarPelicula(pelicula);
+	}
+
+
+	@Override
+	public Pelicula buscarPeliculaPorId(Integer id) {
+		// TODO Auto-generated method stub
+		return this.peliculaRepo.buscarPelicula(id);
+	}
+
 }

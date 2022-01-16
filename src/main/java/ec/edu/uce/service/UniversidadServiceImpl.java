@@ -18,4 +18,22 @@ public class UniversidadServiceImpl implements IUniversidadService {
 		this.universidadRepo.insertarUniversidad(universidad);
 	}
 
+	@Override
+	public void borrarUniversidadPorId(Integer id) {
+		// TODO Auto-generated method stub
+		this.universidadRepo.borrarUniversidad(id);
+	}
+
+	@Override
+	public void actualizarUniversidadNuevo(Universidad Universidad) {
+		// TODO Auto-generated method stub
+		this.universidadRepo.actualizarUniversidad(Universidad);
+	}
+
+	@Override
+	public Universidad buscarUniversidadPorId(Integer id) {
+		// TODO Auto-generated method stub
+		return this.universidadRepo.buscarUniversidad(id);
+	}
+
 }

@@ -47,12 +47,13 @@ public class Universidad {
 		this.calificacion = calificacion;
 	}
 	
-	
 	@Override
 	public String toString() {
 		return "Universidad [id=" + id + ", nombre=" + nombre + ", ciudad=" + ciudad + ", numeroCarreras="
 				+ numeroCarreras + ", numeroEstudiantes=" + numeroEstudiantes + ", calificacion=" + calificacion + "]";
 	}
+	
+	
 	
 	
 

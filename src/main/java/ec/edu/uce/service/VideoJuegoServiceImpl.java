@@ -19,5 +19,23 @@ public class VideoJuegoServiceImpl implements IVideoJuegoService {
 		this.videojuegoRepo.insertarVideojuego(videojuego);
 	}
 
+	@Override
+	public void borrarVideojuegoPorId(Integer id) {
+		// TODO Auto-generated method stub
+		this.videojuegoRepo.borrarVideojuego(id);
+	}
+
+	@Override
+	public void actualizarVideojuegoNuevo(Videojuego videojuego) {
+		// TODO Auto-generated method stub
+		this.videojuegoRepo.actualizarVideojuego(videojuego);
+	}
+
+	@Override
+	public Videojuego buscarVideojuegoPorId(Integer id) {
+		// TODO Auto-generated method stub
+		return this.videojuegoRepo.buscarVIdeojuego(id);
+	}
+
 	
 }

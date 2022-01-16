@@ -18,4 +18,22 @@ public class EstudianteServiceImpl implements IEstudianteService {
 		this.estudianteRepo.insertarEstudiante(estudiante);
 	}
 
+	@Override
+	public void borrarEstudiantePorId(Integer id) {
+		// TODO Auto-generated method stub
+		this.estudianteRepo.borrarEstudiante(id);
+	}
+
+	@Override
+	public void actualizarEstudianteNuevo(Estudiante estudiante) {
+		// TODO Auto-generated method stub
+		this.estudianteRepo.actualizarEstudiante(estudiante);
+	}
+
+	@Override
+	public Estudiante buscarEstudiantePorId(Integer id) {
+		// TODO Auto-generated method stub
+		return this.estudianteRepo.buscarEstudiante(id);
+	}
+
 }

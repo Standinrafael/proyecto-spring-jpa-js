@@ -18,4 +18,22 @@ public class RopaServiceImpl implements IRopaService {
 		this.ropaRepo.insertarRopa(ropa);
 	}
 
+	@Override
+	public void borrarRopaPorId(Integer id) {
+		// TODO Auto-generated method stub
+		this.ropaRepo.borrarRopa(id);
+	}
+
+	@Override
+	public void actualizarRopaNuevo(Ropa ropa) {
+		// TODO Auto-generated method stub
+		this.ropaRepo.actualizarRopa(ropa);
+	}
+
+	@Override
+	public Ropa buscarRopaPorId(Integer id) {
+		// TODO Auto-generated method stub
+		return this.ropaRepo.buscarRopa(id);
+	}
+
 }
