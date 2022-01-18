@@ -1,25 +1,17 @@
 package ec.edu.uce;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import ec.edu.uce.modelo.Equipo;
-import ec.edu.uce.modelo.Estudiante;
-import ec.edu.uce.modelo.GuiaTelefonica;
-import ec.edu.uce.modelo.Hotel;
-import ec.edu.uce.modelo.Libro;
-import ec.edu.uce.modelo.Materia;
-import ec.edu.uce.modelo.Pelicula;
-import ec.edu.uce.modelo.Ropa;
-import ec.edu.uce.modelo.Universidad;
-import ec.edu.uce.modelo.Videojuego;
+import ec.edu.uce.modelo.jpa.Guardia;
 import ec.edu.uce.service.IEquipoService;
 import ec.edu.uce.service.IEstudianteService;
 import ec.edu.uce.service.IGestorCitaService;
+import ec.edu.uce.service.IGuardiaService;
 import ec.edu.uce.service.IGuiaTelefonicaService;
 import ec.edu.uce.service.IHotelService;
 import ec.edu.uce.service.ILibroService;
@@ -70,6 +62,9 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 	
 	@Autowired
 	private IGestorCitaService gestorCitaService;
+	
+	@Autowired
+	private IGuardiaService guardiaService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoSpringJpaJsApplication.class, args);
@@ -78,6 +73,20 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
+		
+		Guardia g1= new Guardia();		
+		g1.setNombre("Peter");
+		g1.setApellido("Parker");
+		g1.setEdificio("Naciones Unidas");
+		this.guardiaService.guardarGuardia(g1);
+		
+		Guardia g2=new Guardia();
+		g2.setId(2);
+		g2.setApellido("Jean");
+		g2.setNombre("Mary");
+		g2.setEdificio("Vilalflora");
+		
+		this.guardiaService.actualizar(g2);
 		
 		//GESTOR SERVICE 
 	/*	Paciente p1= new Paciente();
@@ -344,7 +353,7 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 		videojuego3.setModoJuego("Multijugador");
 		videojuego3.setClasificacion("+18");
 		this.videojuegoService.actualizarVideojuegoNuevo(videojuego3);
-		*/
+		
 		
 		
 		//METODOS PARA BUSCAR
@@ -399,7 +408,7 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 		Videojuego v1= this.videojuegoService.buscarVideojuegoPorId(3);
 		LOG.info("El videojuego que usted esta buscando es: ");
 		LOG.info("-"+v1);
-		
+		*/
 	}
 
 }
