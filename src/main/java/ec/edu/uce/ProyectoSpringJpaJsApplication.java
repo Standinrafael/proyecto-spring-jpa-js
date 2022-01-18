@@ -7,9 +7,16 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import ec.edu.uce.modelo.jpa.Guardia;
+import ec.edu.uce.modelo.jpa.Computadora;
+import ec.edu.uce.modelo.jpa.Empresa;
+import ec.edu.uce.modelo.jpa.Farmacia;
+import ec.edu.uce.modelo.jpa.Parque;
+import ec.edu.uce.modelo.jpa.Supermercado;
+import ec.edu.uce.service.IComputadoraService;
+import ec.edu.uce.service.IEmpresaService;
 import ec.edu.uce.service.IEquipoService;
 import ec.edu.uce.service.IEstudianteService;
+import ec.edu.uce.service.IFarmaciaService;
 import ec.edu.uce.service.IGestorCitaService;
 import ec.edu.uce.service.IGuardiaService;
 import ec.edu.uce.service.IGuiaTelefonicaService;
@@ -17,8 +24,10 @@ import ec.edu.uce.service.IHotelService;
 import ec.edu.uce.service.ILibroService;
 import ec.edu.uce.service.IMateriaService;
 import ec.edu.uce.service.IPacienteService;
+import ec.edu.uce.service.IParqueService;
 import ec.edu.uce.service.IPeliculaService;
 import ec.edu.uce.service.IRopaService;
+import ec.edu.uce.service.ISupermercadoService;
 import ec.edu.uce.service.IUniversidadService;
 import ec.edu.uce.service.IVideoJuegoService;
 
@@ -65,6 +74,23 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 	
 	@Autowired
 	private IGuardiaService guardiaService;
+	
+	@Autowired
+	private IComputadoraService computadoraService;
+	
+	@Autowired
+	private IFarmaciaService farmaciaService;
+	
+	
+	@Autowired
+	private IEmpresaService empresaService;
+	
+	
+	@Autowired
+	private IParqueService parqueService;
+	
+	@Autowired
+	private ISupermercadoService supermercadoService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoSpringJpaJsApplication.class, args);
@@ -74,7 +100,7 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 		
-		Guardia g1= new Guardia();		
+		/*Guardia g1= new Guardia();		
 		g1.setNombre("Peter");
 		g1.setApellido("Parker");
 		g1.setEdificio("Naciones Unidas");
@@ -87,7 +113,7 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 		g2.setEdificio("Vilalflora");
 		
 		this.guardiaService.actualizar(g2);
-		
+		*
 		//GESTOR SERVICE 
 	/*	Paciente p1= new Paciente();
 		p1.setId(5);
@@ -408,7 +434,87 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 		Videojuego v1= this.videojuegoService.buscarVideojuegoPorId(3);
 		LOG.info("El videojuego que usted esta buscando es: ");
 		LOG.info("-"+v1);
+		
+		
+		
+		
+		//----------------------------JPA------------------------------------///
+		//Metodos Insertar
+		    //Computadora
+		Computadora c1= new Computadora();
+		c1.setNombre("Lexus");
+		c1.setMarca("Lenovo");
+		c1.setPrecio(1050.50);
+		computadoraService.guardar(c1);
+		
+		    //Empresa
+		Empresa e1= new Empresa();
+		e1.setNombre("LG");
+		e1.setPais("Corea del Sur");
+		e1.setNumeroEmpleados(10500);
+		empresaService.guardar(e1);
+		
+		    //Farmacia
+		Farmacia f1= new Farmacia();
+		f1.setNombre("Sanitas");
+		f1.setCiudad("Loja");
+		f1.setNumeroSucursales(3);
+		farmaciaService.guardar(f1);
+		
+		    //Parque
+		Parque p1= new Parque();
+		p1.setNombre("La Carolina");
+		p1.setPais("Ecuador");
+		p1.setArea(120.35);
+		parqueService.guardar(p1);
+		
+		    //Supermercado
+		Supermercado s1= new Supermercado();
+		s1.setNombre("TIA");
+		s1.setPais("Ecuador");
+		s1.setNumeroSucursales(120);
+		supermercadoService.guardar(s1);
 		*/
+		//Metodos Actualizar
+		 //Computadora
+		Computadora c2= new Computadora();
+		c2.setId(11);
+		c2.setNombre("Scorpio");
+		c2.setMarca("Asus");
+		c2.setPrecio(1250.50);
+		computadoraService.actualizar(c2);
+		
+		    //Empresa
+		Empresa e2= new Empresa();
+		e2.setId(12);
+		e2.setNombre("Whirlpool");
+		e2.setPais("Estados Unidos");
+		e2.setNumeroEmpleados(5600);
+		empresaService.actualizar(e2);
+		
+		    //Farmacia
+		Farmacia f2= new Farmacia();
+		f2.setId(13);
+		f2.setNombre("Sana Sana");
+		f2.setCiudad("Quito");
+		f2.setNumeroSucursales(13);
+		farmaciaService.actualizar(f2);
+		
+		    //Parque
+		Parque p2= new Parque();
+		p2.setId(14);
+		p2.setNombre("Central Park");
+		p2.setPais("Estaddos Unidos");
+		p2.setArea(520.70);
+		parqueService.actualizar(p2);
+		
+		    //Supermercado
+		Supermercado s2= new Supermercado(); 
+		s2.setId(15);
+		s2.setNombre("Supermaxi");
+		s2.setPais("Ecuador");
+		s2.setNumeroSucursales(500);
+		supermercadoService.actualizar(s2);
 	}
 
 }
