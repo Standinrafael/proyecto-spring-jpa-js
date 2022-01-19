@@ -3,7 +3,9 @@ package ec.edu.uce.modelo.jpa;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -11,7 +13,8 @@ import javax.persistence.Table;
 public class Farmacia {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq_farmacia")
+	@SequenceGenerator(name="seq_farmacia",sequenceName="seq_farmacia",allocationSize=1)
 	@Column(name="id")
 	private Integer id;
 	

@@ -7,11 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import ec.edu.uce.modelo.jpa.Computadora;
-import ec.edu.uce.modelo.jpa.Empresa;
-import ec.edu.uce.modelo.jpa.Farmacia;
-import ec.edu.uce.modelo.jpa.Parque;
-import ec.edu.uce.modelo.jpa.Supermercado;
+import ec.edu.uce.modelo.jpa.Guardia;
 import ec.edu.uce.service.IComputadoraService;
 import ec.edu.uce.service.IEmpresaService;
 import ec.edu.uce.service.IEquipoService;
@@ -100,12 +96,29 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 		
-		/*Guardia g1= new Guardia();		
-		g1.setNombre("Peter");
-		g1.setApellido("Parker");
+		//Buscar por Apellido
+		Guardia gApellido=this.guardiaService.buscarPorApellido("Perez");
+		System.out.println(gApellido);
+		
+		
+		//Eliminar
+		//this.guardiaService.borrar(2);
+		/*
+		
+		//Buscar		
+		//Guardia g1=this.guardiaService.buscar(2);
+		//System.out.println(g1);
+		
+		Guardia g1= new Guardia();		
+		g1.setNombre("Juan");
+		g1.setApellido("Perez");
 		g1.setEdificio("Naciones Unidas");
 		this.guardiaService.guardarGuardia(g1);
 		
+		/*
+		
+		//Actualizar
+		/*
 		Guardia g2=new Guardia();
 		g2.setId(2);
 		g2.setApellido("Jean");
@@ -113,9 +126,9 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 		g2.setEdificio("Vilalflora");
 		
 		this.guardiaService.actualizar(g2);
-		*
+		
 		//GESTOR SERVICE 
-	/*	Paciente p1= new Paciente();
+		Paciente p1= new Paciente();
 		p1.setId(5);
 		p1.setNombre("Juan");
 		p1.setApellido("Guevara");
@@ -474,7 +487,7 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 		s1.setPais("Ecuador");
 		s1.setNumeroSucursales(120);
 		supermercadoService.guardar(s1);
-		*/
+		
 		//Metodos Actualizar
 		 //Computadora
 		Computadora c2= new Computadora();
@@ -514,7 +527,7 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 		s2.setNombre("Supermaxi");
 		s2.setPais("Ecuador");
 		s2.setNumeroSucursales(500);
-		supermercadoService.actualizar(s2);
+		supermercadoService.actualizar(s2);*/
 	}
 
 }

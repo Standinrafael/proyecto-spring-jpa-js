@@ -24,4 +24,22 @@ public class GuardiaServiceImpl implements IGuardiaService {
 		this.guardiaRepo.actualizarGuardia(guardia);
 	}
 
+	@Override
+	public Guardia buscar(Integer id) {
+		// TODO Auto-generated method stub
+		return this.guardiaRepo.buscarGuardiaPorId(id);
+	}
+
+	@Override
+	public void borrar(Integer id) {
+		// TODO Auto-generated method stub
+		this.guardiaRepo.borrarGuardiaPorId(id);
+	}
+
+	@Override
+	public Guardia buscarPorApellido(String apellido) {
+		// TODO Auto-generated method stub
+		return this.guardiaRepo.buscarGuardiaPorApellido(apellido);
+	}
+
 }
