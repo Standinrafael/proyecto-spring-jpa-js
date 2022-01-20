@@ -25,4 +25,22 @@ public class FarmaciaServiceImpl implements IFarmaciaService {
 		this.farmaciaRepo.actualizarFarmacia(farmacia);
 	}
 
+	@Override
+	public Farmacia buscar(Integer id) {
+		// TODO Auto-generated method stub
+		return this.farmaciaRepo.buscarFarmaciaPorId(id);
+	}
+
+	@Override
+	public void borrar(Integer id) {
+		// TODO Auto-generated method stub
+		this.farmaciaRepo.borrarFarmaciaPorId(id);
+	}
+
+	@Override
+	public Farmacia buscarPorNombre(String nombre) {
+		// TODO Auto-generated method stub
+		return this.farmaciaRepo.buscarFarmaciaPorNombre(nombre);
+	}
+
 }

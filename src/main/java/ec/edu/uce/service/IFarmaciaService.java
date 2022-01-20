@@ -6,4 +6,7 @@ public interface IFarmaciaService {
 
 	void guardar(Farmacia farmacia);
 	void actualizar(Farmacia farmacia);
+	Farmacia buscar(Integer id);
+	void borrar(Integer id);
+	Farmacia buscarPorNombre(String nombre);
 }

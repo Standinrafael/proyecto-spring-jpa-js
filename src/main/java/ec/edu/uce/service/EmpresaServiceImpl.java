@@ -24,4 +24,22 @@ public class EmpresaServiceImpl implements IEmpresaService {
 		this.empresaRepo.actualizarEmpresa(empresa);
 	}
 
+	@Override
+	public Empresa buscar(Integer id) {
+		// TODO Auto-generated method stub
+		return this.empresaRepo.buscarEmpresaPorId(id);
+	}
+
+	@Override
+	public void borrar(Integer id) {
+		// TODO Auto-generated method stub
+		this.empresaRepo.borrarEmpresaPorId(id);
+	}
+
+	@Override
+	public Empresa buscarPorNombre(String nombre) {
+		// TODO Auto-generated method stub
+		return this.empresaRepo.buscarEmpresaPorNombre(nombre);
+	}
+
 }

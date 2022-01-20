@@ -7,5 +7,6 @@ public interface IComputadoraRepo {
 	void actualizarComputadora(Computadora computadora);
 	Computadora buscarComputadoraPorId(Integer id);
 	void borrarComputadoraPorId(Integer id);
+	Computadora buscarComputadoraPorMarca(String marca);
 
 }

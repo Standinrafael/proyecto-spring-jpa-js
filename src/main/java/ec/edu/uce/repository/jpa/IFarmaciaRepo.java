@@ -8,4 +8,5 @@ public interface IFarmaciaRepo {
 	void actualizarFarmacia(Farmacia farmacia);
 	Farmacia buscarFarmaciaPorId(Integer id);
 	void borrarFarmaciaPorId(Integer id);
+	Farmacia buscarFarmaciaPorNombre(String nombre);
 }

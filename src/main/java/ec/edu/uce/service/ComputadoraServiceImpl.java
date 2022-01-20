@@ -25,4 +25,22 @@ public class ComputadoraServiceImpl implements IComputadoraService {
 		this.computadoraRepo.actualizarComputadora(computadora);
 	}
 
+	@Override
+	public Computadora buscar(Integer id) {
+		// TODO Auto-generated method stub
+		return this.computadoraRepo.buscarComputadoraPorId(id);
+	}
+
+	@Override
+	public void borrar(Integer id) {
+		// TODO Auto-generated method stub
+		this.computadoraRepo.borrarComputadoraPorId(id);
+	}
+
+	@Override
+	public Computadora buscarPorMarca(String marca) {
+		// TODO Auto-generated method stub
+		return this.computadoraRepo.buscarComputadoraPorMarca(marca);
+	}
+
 }

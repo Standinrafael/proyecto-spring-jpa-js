@@ -7,5 +7,5 @@ public interface IEmpresaRepo {
 	void actualizarEmpresa(Empresa empresa);
 	Empresa buscarEmpresaPorId(Integer id);
 	void borrarEmpresaPorId(Integer id);
-
+	Empresa buscarEmpresaPorNombre(String nombre);
 }

@@ -25,4 +25,22 @@ public class ParqueServiceImpl implements IParqueService {
 		this.parqueRepo.actualizarParque(parque);
 	}
 
+	@Override
+	public Parque buscar(Integer id) {
+		// TODO Auto-generated method stub
+		return this.parqueRepo.buscarParquePorId(id);
+	}
+
+	@Override
+	public void borrar(Integer id) {
+		// TODO Auto-generated method stub
+		this.parqueRepo.borrarParquePorId(id);
+	}
+
+	@Override
+	public Parque buscarPorPais(String pais) {
+		// TODO Auto-generated method stub
+		return this.parqueRepo.buscarParquePorPais(pais);
+	}
+
 }

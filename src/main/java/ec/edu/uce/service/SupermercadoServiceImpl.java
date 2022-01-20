@@ -24,5 +24,23 @@ public class SupermercadoServiceImpl implements ISupermercadoService {
 		this.supermercadoRepo.actualizarSupermercado(supermercado);
 	}
 
+	@Override
+	public Supermercado buscar(Integer id) {
+		// TODO Auto-generated method stub
+		return this.supermercadoRepo.buscarSupermercadoporId(id);
+	}
+
+	@Override
+	public void borrar(Integer id) {
+		// TODO Auto-generated method stub
+		this.supermercadoRepo.borrarSupermercadoPorId(id);
+	}
+
+	@Override
+	public Supermercado buscarPorNombre(String nombre) {
+		// TODO Auto-generated method stub
+		return this.supermercadoRepo.buscarSupermercadoPorNombre(nombre);
+	}
+
 	
 }

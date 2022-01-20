@@ -7,5 +7,7 @@ public interface IParqueRepo {
 	void actualizarParque(Parque parque);
 	Parque buscarParquePorId(Integer id);
 	void borrarParquePorId(Integer id);
+	Parque buscarParquePorPais(String pais);
+	
 
 }

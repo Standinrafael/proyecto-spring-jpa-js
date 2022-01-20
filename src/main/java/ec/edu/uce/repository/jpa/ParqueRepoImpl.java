@@ -2,6 +2,7 @@ package ec.edu.uce.repository.jpa;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
@@ -30,13 +31,23 @@ public class ParqueRepoImpl implements IParqueRepo {
 	@Override
 	public Parque buscarParquePorId(Integer id) {
 		// TODO Auto-generated method stub
-		return null;
+		return this.entityManager.find(Parque.class, id);
 	}
 
 	@Override
 	public void borrarParquePorId(Integer id) {
 		// TODO Auto-generated method stub
-		
+		Parque parqueABorrar=this.buscarParquePorId(id);
+		this.entityManager.remove(parqueABorrar);
+	}
+
+	@Override
+	public Parque buscarParquePorPais(String pais) {
+		// TODO Auto-generated method stub
+		Query miQuery=this.entityManager.createQuery("select p from Parque p where p.pais=:valor");
+		miQuery.setParameter("valor", pais);
+		Parque miParque=(Parque)miQuery.getSingleResult();
+		return miParque;
 	}
 
 }

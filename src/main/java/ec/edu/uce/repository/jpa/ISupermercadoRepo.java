@@ -7,5 +7,5 @@ public interface ISupermercadoRepo {
 	void actualizarSupermercado(Supermercado supermercado);
 	Supermercado buscarSupermercadoporId(Integer id);
 	void borrarSupermercadoPorId(Integer id);
-
+	Supermercado buscarSupermercadoPorNombre(String nombre);
 }

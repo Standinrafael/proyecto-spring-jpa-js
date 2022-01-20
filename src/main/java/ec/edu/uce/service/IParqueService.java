@@ -6,4 +6,8 @@ public interface IParqueService {
 
 	void guardar(Parque parque);
 	void actualizar(Parque parque);
+	Parque buscar(Integer id);
+	void borrar (Integer id);
+	Parque buscarPorPais(String pais);
+	
 }

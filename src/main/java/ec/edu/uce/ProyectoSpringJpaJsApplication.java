@@ -7,7 +7,12 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import ec.edu.uce.modelo.jpa.Computadora;
+import ec.edu.uce.modelo.jpa.Empresa;
+import ec.edu.uce.modelo.jpa.Farmacia;
 import ec.edu.uce.modelo.jpa.Guardia;
+import ec.edu.uce.modelo.jpa.Parque;
+import ec.edu.uce.modelo.jpa.Supermercado;
 import ec.edu.uce.service.IComputadoraService;
 import ec.edu.uce.service.IEmpresaService;
 import ec.edu.uce.service.IEquipoService;
@@ -97,8 +102,8 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 		// TODO Auto-generated method stub
 		
 		//Buscar por Apellido
-		Guardia gApellido=this.guardiaService.buscarPorApellido("Perez");
-		System.out.println(gApellido);
+	//	Guardia gApellido=this.guardiaService.buscarPorApellido("Perez");
+	//	System.out.println(gApellido);
 		
 		
 		//Eliminar
@@ -527,7 +532,41 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 		s2.setNombre("Supermaxi");
 		s2.setPais("Ecuador");
 		s2.setNumeroSucursales(500);
-		supermercadoService.actualizar(s2);*/
+		supermercadoService.actualizar(s2);
+		
+		
+		//Eliminar por id
+		this.computadoraService.borrar(6);
+		this.empresaService.borrar(7);
+		this.farmaciaService.borrar(8);
+		this.parqueService.borrar(9);
+		this.supermercadoService.borrar(10);
+		
+*/
+		//Buscar por id
+		Computadora c1=this.computadoraService.buscar(1);
+		LOG.info("-"+c1);
+		Empresa e1=this.empresaService.buscar(1);
+		LOG.info("-"+e1);
+		Farmacia f1=this.farmaciaService.buscar(1);
+		LOG.info("-"+f1);
+		Parque p1=this.parqueService.buscar(1);
+		LOG.info("-"+p1);
+		Supermercado s1=this.supermercadoService.buscar(1);
+		LOG.info("-"+s1);
+		
+		//Buscar por otro parametro
+		
+		Computadora c2=this.computadoraService.buscarPorMarca("Asus");
+		LOG.info("-"+c2);
+		Empresa e2=this.empresaService.buscarPorNombre("Whirlpool");
+		LOG.info("-"+e2);
+		Farmacia f2=this.farmaciaService.buscarPorNombre("Sana Sana");
+		LOG.info("-"+f2);
+		Parque p2=this.parqueService.buscarPorPais("Estaddos Unidos");
+		LOG.info("-"+p2);
+		Supermercado s2=this.supermercadoService.buscarPorNombre("Supermaxi");
+		LOG.info("-"+s2);
 	}
 
 }
