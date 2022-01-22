@@ -101,26 +101,39 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 		
-		//Buscar por Apellido
-	//	Guardia gApellido=this.guardiaService.buscarPorApellido("Perez");
-	//	System.out.println(gApellido);
+		//Buscar por NamedQuery
+		Guardia gApellido=this.guardiaService.buscarGuardiaPorApellidoNamed("Lopez");
+		LOG.info("El guardia es "+gApellido);
 		
+	    /*	
+		//Buscar po TypedQuery
+		Guardia gApellido=this.guardiaService.buscarGuardiaPorApellidoType("Lopez");
+		System.out.println(gApellido);
+		
+		//Buscar por Apellido
+	    //Guardia gApellido=this.guardiaService.buscarPorApellido("Perez22");
+		//System.out.println(gApellido);
+		
+		//Guardia gApellido=this.guardiaService.buscarGuardiaPorApellidoLista("Parker");
+		//System.out.println(gApellido);
 		
 		//Eliminar
 		//this.guardiaService.borrar(2);
-		/*
 		
-		//Buscar		
-		//Guardia g1=this.guardiaService.buscar(2);
-		//System.out.println(g1);
+		
+		
 		
 		Guardia g1= new Guardia();		
 		g1.setNombre("Juan");
-		g1.setApellido("Perez");
-		g1.setEdificio("Naciones Unidas");
+		g1.setApellido("Lopez");
+		g1.setEdificio("Naciones Unidas;
 		this.guardiaService.guardarGuardia(g1);
 		
 		/*
+		 * //Buscar		
+		//Guardia g1=this.guardiaService.buscar(2);
+		//System.out.println(g1);
+		 */
 		
 		//Actualizar
 		/*
@@ -542,8 +555,10 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 		this.parqueService.borrar(9);
 		this.supermercadoService.borrar(10);
 		
-*/
+
 		//Buscar por id
+		LOG.info("");
+		LOG.info("----------------BUSQUE POR ID-----------------------------");
 		Computadora c1=this.computadoraService.buscar(1);
 		LOG.info("-"+c1);
 		Empresa e1=this.empresaService.buscar(1);
@@ -554,8 +569,11 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 		LOG.info("-"+p1);
 		Supermercado s1=this.supermercadoService.buscar(1);
 		LOG.info("-"+s1);
+		LOG.info("");
 		
 		//Buscar por otro parametro
+		LOG.info("");
+		LOG.info("----------------BUSQUE POR OTRO PARAMETRO-----------------------------");
 		
 		Computadora c2=this.computadoraService.buscarPorMarca("Asus");
 		LOG.info("-"+c2);
@@ -567,6 +585,7 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 		LOG.info("-"+p2);
 		Supermercado s2=this.supermercadoService.buscarPorNombre("Supermaxi");
 		LOG.info("-"+s2);
+		LOG.info("");*/
 	}
 
 }

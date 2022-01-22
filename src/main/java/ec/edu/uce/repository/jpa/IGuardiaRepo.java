@@ -12,5 +12,11 @@ public interface IGuardiaRepo {
 	
 	void borrarGuardiaPorId(Integer id);
 	
-	Guardia buscarGuardiaPorApellido(String apellido);
+	Guardia buscarGuardiaPorApellido(String apellido);	
+	
+	Guardia buscarGuardiaPorApellidoType(String apellido);
+	
+	Guardia buscarGuardiaPorApellidoNamed(String apellido);
+	
+	Guardia buscarGuardiaPorApellidoLista(String apellido);
 }
