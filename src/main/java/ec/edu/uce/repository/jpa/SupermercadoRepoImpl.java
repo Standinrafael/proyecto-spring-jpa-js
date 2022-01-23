@@ -3,6 +3,7 @@ package ec.edu.uce.repository.jpa;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
@@ -48,6 +49,33 @@ public class SupermercadoRepoImpl implements ISupermercadoRepo {
 		miQuery.setParameter("valor", nombre);
 		Supermercado miSupermercado=(Supermercado)miQuery.getSingleResult();
 		return miSupermercado;
+	}
+
+	/**
+	 * Este metodo es igual que el buscarSupermercadoPorNombre nada mas que con TypedQuery
+	 *
+	 */
+	
+	@Override
+	public Supermercado buscarSupermercadoPorNombreType(String nombre) {
+		// TODO Auto-generated method stub
+		TypedQuery<Supermercado> miTypedQuery=(TypedQuery<Supermercado>)this.entityManager.createQuery("select s from Supermercado s where s.nombre=: valor");
+		miTypedQuery.setParameter("valor", nombre);
+		return miTypedQuery.getSingleResult();
+	}
+
+	/**
+	 * Este metodo es igual que el buscarSupermercadoPorNombre nada mas que con NamedQuery
+	 *
+	 */
+	
+	@Override
+	public Supermercado buscarSupermercadoPorNombreNamed(String nombre) {
+		// TODO Auto-generated method stub
+		Query miQuery=this.entityManager.createNamedQuery("Supermercado.buscarPorNombre");
+		miQuery.setParameter("valor", nombre);
+		
+		return (Supermercado)miQuery.getSingleResult();
 	}
 
 }

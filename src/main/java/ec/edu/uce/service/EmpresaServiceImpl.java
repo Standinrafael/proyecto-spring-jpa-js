@@ -42,4 +42,16 @@ public class EmpresaServiceImpl implements IEmpresaService {
 		return this.empresaRepo.buscarEmpresaPorNombre(nombre);
 	}
 
+	@Override
+	public Empresa buscarEmpresaPorNombreType(String nombre) {
+		// TODO Auto-generated method stub
+		return this.empresaRepo.buscarEmpresaPorNombreType(nombre);
+	}
+
+	@Override
+	public Empresa buscarEmpresaPorNombreNamed(String nombre) {
+		// TODO Auto-generated method stub
+		return this.empresaRepo.buscarEmpresaPorNombreNamed(nombre);
+	}
+
 }

@@ -9,4 +9,7 @@ public interface ISupermercadoService {
 	Supermercado buscar(Integer id);
 	void borrar(Integer id);
 	Supermercado buscarPorNombre(String nombre);
+	//Typed y Named
+	Supermercado buscarSupermercadoPorNombreType(String nombre);
+	Supermercado buscarSupermercadoPorNombreNamed(String nombre);
 }

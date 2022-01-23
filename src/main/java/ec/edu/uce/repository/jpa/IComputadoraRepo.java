@@ -8,5 +8,8 @@ public interface IComputadoraRepo {
 	Computadora buscarComputadoraPorId(Integer id);
 	void borrarComputadoraPorId(Integer id);
 	Computadora buscarComputadoraPorMarca(String marca);
+	//Type y Named
+	Computadora buscarComputadoraPorMarcaType(String marca);
+	Computadora buscarComputadoraPorMarcaNamed(String marca);
 
 }

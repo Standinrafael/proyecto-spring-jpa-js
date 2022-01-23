@@ -43,4 +43,16 @@ public class ComputadoraServiceImpl implements IComputadoraService {
 		return this.computadoraRepo.buscarComputadoraPorMarca(marca);
 	}
 
+	@Override
+	public Computadora buscarComputadoraPorMarcaType(String marca) {
+		// TODO Auto-generated method stub
+		return this.computadoraRepo.buscarComputadoraPorMarcaType(marca);
+	}
+
+	@Override
+	public Computadora buscarComputadoraPorMarcaNamed(String marca) {
+		// TODO Auto-generated method stub
+		return this.computadoraRepo.buscarComputadoraPorMarcaNamed(marca);
+	}
+
 }

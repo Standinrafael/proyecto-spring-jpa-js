@@ -43,4 +43,16 @@ public class ParqueServiceImpl implements IParqueService {
 		return this.parqueRepo.buscarParquePorPais(pais);
 	}
 
+	@Override
+	public Parque buscarParquePorPaisType(String pais) {
+		// TODO Auto-generated method stub
+		return this.parqueRepo.buscarParquePorPaisType(pais);
+	}
+
+	@Override
+	public Parque buscarParquePorPaisNamed(String pais) {
+		// TODO Auto-generated method stub
+		return this.parqueRepo.buscarParquePorPaisNamed(pais);
+	}
+
 }

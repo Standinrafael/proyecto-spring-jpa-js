@@ -3,6 +3,7 @@ package ec.edu.uce.repository.jpa;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
@@ -48,6 +49,31 @@ public class FarmaciaRepoImpl implements IFarmaciaRepo {
 		miQuery.setParameter("valor",nombre);
 		Farmacia miFarmacia=(Farmacia)miQuery.getSingleResult();
 		return miFarmacia;
+	}
+
+	/**
+	 * Este metodo es igual que el buscarFarmaciaPorNombre nada mas que con TypedQuery
+	 *
+	 */
+	@Override
+	public Farmacia buscarFarmaciaPorNombreType(String nombre) {
+		// TODO Auto-generated method stub
+		TypedQuery<Farmacia> miTypedQuery=(TypedQuery <Farmacia>)this.entityManager.createQuery("select f from Farmacia f where f.nombre=:valor");
+		miTypedQuery.setParameter("valor",nombre);
+		return miTypedQuery.getSingleResult();
+	}
+	
+	/**
+	 * Este metodo es igual que el buscarFarmaciaPorNombre nada mas que con NamedQuery
+	 *
+	 */
+
+	@Override
+	public Farmacia buscarFarmaciaPorNombreNamed(String nombre) {
+		// TODO Auto-generated method stub
+		Query miQuery=this.entityManager.createNamedQuery("Farmacia.buscarPorNombre");
+		miQuery.setParameter("valor", nombre);
+		return (Farmacia)miQuery.getSingleResult();
 	}
 
 }

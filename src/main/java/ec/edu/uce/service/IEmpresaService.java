@@ -8,4 +8,8 @@ public interface IEmpresaService {
 	Empresa buscar(Integer id);
 	void borrar (Integer id);
 	Empresa buscarPorNombre(String nombre);
+	//Typed y Named
+	Empresa buscarEmpresaPorNombreType(String nombre);
+	Empresa buscarEmpresaPorNombreNamed(String nombre);
+	
 }

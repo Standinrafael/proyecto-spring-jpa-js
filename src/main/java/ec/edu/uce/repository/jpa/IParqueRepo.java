@@ -8,6 +8,9 @@ public interface IParqueRepo {
 	Parque buscarParquePorId(Integer id);
 	void borrarParquePorId(Integer id);
 	Parque buscarParquePorPais(String pais);
+	//Type y Named
+	Parque buscarParquePorPaisType(String pais);
+	Parque buscarParquePorPaisNamed(String pais);
 	
 
 }

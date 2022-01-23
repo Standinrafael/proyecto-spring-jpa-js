@@ -9,4 +9,7 @@ public interface IFarmaciaService {
 	Farmacia buscar(Integer id);
 	void borrar(Integer id);
 	Farmacia buscarPorNombre(String nombre);
+	//Typed y Named
+	Farmacia buscarFarmaciaPorNombreType(String nombre);
+	Farmacia buscarFarmaciaPorNombreNamed(String nombre);
 }

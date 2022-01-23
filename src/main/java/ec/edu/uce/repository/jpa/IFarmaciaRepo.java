@@ -9,4 +9,7 @@ public interface IFarmaciaRepo {
 	Farmacia buscarFarmaciaPorId(Integer id);
 	void borrarFarmaciaPorId(Integer id);
 	Farmacia buscarFarmaciaPorNombre(String nombre);
+	//Type y Named
+	Farmacia buscarFarmaciaPorNombreType(String nombre);
+	Farmacia buscarFarmaciaPorNombreNamed(String nombre);
 }

@@ -102,8 +102,8 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 		// TODO Auto-generated method stub
 		
 		//Buscar por NamedQuery
-		Guardia gApellido=this.guardiaService.buscarGuardiaPorApellidoNamed("Lopez");
-		LOG.info("El guardia es "+gApellido);
+	//	Guardia gApellido=this.guardiaService.buscarGuardiaPorApellidoNamed("Lopez");
+	//	LOG.info("El guardia es "+gApellido);
 		
 	    /*	
 		//Buscar po TypedQuery
@@ -586,6 +586,36 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 		Supermercado s2=this.supermercadoService.buscarPorNombre("Supermaxi");
 		LOG.info("-"+s2);
 		LOG.info("");*/
+		
+		// Busqueda por otro parametro TypedQuery
+		LOG.info("");
+		LOG.info("----------------BUSQUE POR OTRO PARAMETRO: TypedQuery -----------------------------");
+		Computadora c2=this.computadoraService.buscarComputadoraPorMarcaType("Asus");
+		LOG.info("-"+c2);
+		Empresa e2=this.empresaService.buscarEmpresaPorNombreType("Whirlpool");
+		LOG.info("-"+e2);
+		Farmacia f2=this.farmaciaService.buscarFarmaciaPorNombreType("Sana Sana");
+		LOG.info("-"+f2);
+		Parque p2=this.parqueService.buscarParquePorPaisType("Estaddos Unidos");
+		LOG.info("-"+p2);
+		Supermercado s2=this.supermercadoService.buscarSupermercadoPorNombreType("Supermaxi");
+		LOG.info("-"+s2);
+		LOG.info("");
+		
+		// Busqueda por otro parametro NamedQuery 
+		LOG.info("");
+		LOG.info("----------------BUSQUE POR OTRO PARAMETRO: NamedQuery -----------------------------");
+		Computadora c3=this.computadoraService.buscarComputadoraPorMarcaNamed("Lenovo");
+		LOG.info("-"+c3);
+		Empresa e3=this.empresaService.buscarEmpresaPorNombreNamed("LG");
+		LOG.info("-"+e3);
+		Farmacia f3=this.farmaciaService.buscarFarmaciaPorNombreNamed("Sanitas");
+		LOG.info("-"+f3);
+		Parque p3=this.parqueService.buscarParquePorPaisNamed("Ecuador");
+		LOG.info("-"+p3);
+		Supermercado s3=this.supermercadoService.buscarSupermercadoPorNombreNamed("TIA");
+		LOG.info("-"+s3);
+		LOG.info("");
 	}
 
 }

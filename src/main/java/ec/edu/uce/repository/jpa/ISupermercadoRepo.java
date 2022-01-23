@@ -8,4 +8,7 @@ public interface ISupermercadoRepo {
 	Supermercado buscarSupermercadoporId(Integer id);
 	void borrarSupermercadoPorId(Integer id);
 	Supermercado buscarSupermercadoPorNombre(String nombre);
+	//Type y Named
+	Supermercado buscarSupermercadoPorNombreType(String nombre);
+	Supermercado buscarSupermercadoPorNombreNamed(String nombre);
 }

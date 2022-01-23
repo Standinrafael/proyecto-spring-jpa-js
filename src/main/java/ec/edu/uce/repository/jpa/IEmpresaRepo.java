@@ -8,4 +8,7 @@ public interface IEmpresaRepo {
 	Empresa buscarEmpresaPorId(Integer id);
 	void borrarEmpresaPorId(Integer id);
 	Empresa buscarEmpresaPorNombre(String nombre);
+	//Type y Named
+	Empresa buscarEmpresaPorNombreType(String nombre);
+	Empresa buscarEmpresaPorNombreNamed(String nombre);
 }

@@ -9,5 +9,7 @@ public interface IParqueService {
 	Parque buscar(Integer id);
 	void borrar (Integer id);
 	Parque buscarPorPais(String pais);
-	
+	//Typed y Named
+	Parque buscarParquePorPaisType(String pais);
+	Parque buscarParquePorPaisNamed(String pais);
 }
