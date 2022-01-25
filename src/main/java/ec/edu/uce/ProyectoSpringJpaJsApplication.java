@@ -102,6 +102,10 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 		// TODO Auto-generated method stub
 		
 		//Buscar por NamedQuery
+		Guardia gApellido=this.guardiaService.buscarGuardiaPorApellidoNative("Lopez");
+		LOG.info("El guardia es "+gApellido);
+		
+		//Buscar por NamedQuery
 	//	Guardia gApellido=this.guardiaService.buscarGuardiaPorApellidoNamed("Lopez");
 	//	LOG.info("El guardia es "+gApellido);
 		
@@ -585,7 +589,7 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 		LOG.info("-"+p2);
 		Supermercado s2=this.supermercadoService.buscarPorNombre("Supermaxi");
 		LOG.info("-"+s2);
-		LOG.info("");*/
+		LOG.info("");
 		
 		// Busqueda por otro parametro TypedQuery
 		LOG.info("");
@@ -615,7 +619,7 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 		LOG.info("-"+p3);
 		Supermercado s3=this.supermercadoService.buscarSupermercadoPorNombreNamed("TIA");
 		LOG.info("-"+s3);
-		LOG.info("");
+		LOG.info("");*/
 	}
 
 }
