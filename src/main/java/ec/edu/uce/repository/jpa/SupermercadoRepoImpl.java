@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
+
 import ec.edu.uce.modelo.jpa.Supermercado;
 
 @Repository
@@ -75,6 +76,18 @@ public class SupermercadoRepoImpl implements ISupermercadoRepo {
 		Query miQuery=this.entityManager.createNamedQuery("Supermercado.buscarPorNombre");
 		miQuery.setParameter("valor", nombre);
 		
+		return (Supermercado)miQuery.getSingleResult();
+	}
+	/**
+	 * Este metodo es igual que el buscarSupermercadoPorNombre nada mas que con NativeQuery
+	 *
+	 */
+
+	@Override
+	public Supermercado buscarSupermercadoPorNombreNative(String nombre) {
+		// TODO Auto-generated method stub
+		Query miQuery=this.entityManager.createNativeQuery("select * from supermercado s where s.nombre=:valor",Supermercado.class);
+		miQuery.setParameter("valor", nombre);
 		return (Supermercado)miQuery.getSingleResult();
 	}
 

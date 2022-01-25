@@ -54,4 +54,10 @@ public class EmpresaServiceImpl implements IEmpresaService {
 		return this.empresaRepo.buscarEmpresaPorNombreNamed(nombre);
 	}
 
+	@Override
+	public Empresa buscarEmpresaPorNombreNative(String nombre) {
+		// TODO Auto-generated method stub
+		return this.empresaRepo.buscarEmpresaPorNombreNative(nombre);
+	}
+
 }

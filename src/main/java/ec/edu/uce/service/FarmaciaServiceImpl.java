@@ -55,4 +55,10 @@ public class FarmaciaServiceImpl implements IFarmaciaService {
 		return this.farmaciaRepo.buscarFarmaciaPorNombreNamed(nombre);
 	}
 
+	@Override
+	public Farmacia buscarFarmaciaPorNombreNative(String nombre) {
+		// TODO Auto-generated method stub
+		return this.farmaciaRepo.buscarFarmaciaPorNombreNative(nombre);
+	}
+
 }

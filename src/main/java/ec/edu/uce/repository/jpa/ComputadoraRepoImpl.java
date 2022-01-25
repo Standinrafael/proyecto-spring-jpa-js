@@ -76,5 +76,19 @@ public class ComputadoraRepoImpl implements IComputadoraRepo {
 		miQuery.setParameter("valor", marca);
 		return (Computadora)miQuery.getSingleResult();
 	}
+	
+	/**
+	 * Este metodo es igual que el buscarComputadoraPorMarca nada mas que con NativeQuery
+	 *
+	 */
+
+	@Override
+	public Computadora buscarComputadoraPorMarcaNative(String marca) {
+		// TODO Auto-generated method stub
+		
+		Query miQuery=this.entityManager.createNativeQuery("select * from computadora c where c.marca=:valor",Computadora.class);
+		miQuery.setParameter("valor", marca);
+		return (Computadora)miQuery.getSingleResult();
+	}
 
 }

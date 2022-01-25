@@ -11,4 +11,6 @@ public interface IEmpresaRepo {
 	//Type y Named
 	Empresa buscarEmpresaPorNombreType(String nombre);
 	Empresa buscarEmpresaPorNombreNamed(String nombre);
+	//Native
+	Empresa buscarEmpresaPorNombreNative(String nombre);
 }

@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
+
 import ec.edu.uce.modelo.jpa.Parque;
 
 @Repository
@@ -74,6 +75,19 @@ public class ParqueRepoImpl implements IParqueRepo {
 		// TODO Auto-generated method stub
 		Query miQuery=this.entityManager.createNamedQuery("Parque.buscarPorPais");
 		miQuery.setParameter("valor",pais);
+		return (Parque)miQuery.getSingleResult();
+	}
+	
+	/**
+	 * Este metodo es igual que el buscarParquePorPais nada mas que con NativeQuery
+	 *
+	 */
+
+	@Override
+	public Parque buscarParquePorPaisNative(String pais) {
+		// TODO Auto-generated method stub
+		Query miQuery=this.entityManager.createNativeQuery("select * from parque p where p.pais=:valor",Parque.class);
+		miQuery.setParameter("valor", pais);
 		return (Parque)miQuery.getSingleResult();
 	}
 

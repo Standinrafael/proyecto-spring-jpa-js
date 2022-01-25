@@ -11,4 +11,6 @@ public interface ISupermercadoRepo {
 	//Type y Named
 	Supermercado buscarSupermercadoPorNombreType(String nombre);
 	Supermercado buscarSupermercadoPorNombreNamed(String nombre);
+	//Native
+	Supermercado buscarSupermercadoPorNombreNative(String nombre);
 }

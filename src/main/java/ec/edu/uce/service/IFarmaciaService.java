@@ -12,4 +12,6 @@ public interface IFarmaciaService {
 	//Typed y Named
 	Farmacia buscarFarmaciaPorNombreType(String nombre);
 	Farmacia buscarFarmaciaPorNombreNamed(String nombre);
+	//Native
+	Farmacia buscarFarmaciaPorNombreNative(String nombre);
 }

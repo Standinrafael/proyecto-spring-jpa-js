@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
+
 import ec.edu.uce.modelo.jpa.Farmacia;
 
 @Repository
@@ -72,6 +73,19 @@ public class FarmaciaRepoImpl implements IFarmaciaRepo {
 	public Farmacia buscarFarmaciaPorNombreNamed(String nombre) {
 		// TODO Auto-generated method stub
 		Query miQuery=this.entityManager.createNamedQuery("Farmacia.buscarPorNombre");
+		miQuery.setParameter("valor", nombre);
+		return (Farmacia)miQuery.getSingleResult();
+	}
+	
+	/**
+	 * Este metodo es igual que el buscarFarmaciaPorNombre nada mas que con NativeQuery
+	 *
+	 */
+
+	@Override
+	public Farmacia buscarFarmaciaPorNombreNative(String nombre) {
+		// TODO Auto-generated method stub
+		Query miQuery=this.entityManager.createNativeQuery("select * from farmacia f where f.nombre=:valor",Farmacia.class);
 		miQuery.setParameter("valor", nombre);
 		return (Farmacia)miQuery.getSingleResult();
 	}

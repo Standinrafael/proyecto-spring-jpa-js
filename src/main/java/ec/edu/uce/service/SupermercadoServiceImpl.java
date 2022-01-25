@@ -54,5 +54,11 @@ public class SupermercadoServiceImpl implements ISupermercadoService {
 		return this.supermercadoRepo.buscarSupermercadoPorNombreNamed(nombre);
 	}
 
+	@Override
+	public Supermercado buscarSupermercadoPorNombreNative(String nombre) {
+		// TODO Auto-generated method stub
+		return this.supermercadoRepo.buscarSupermercadoPorNombreNative(nombre);
+	}
+
 	
 }

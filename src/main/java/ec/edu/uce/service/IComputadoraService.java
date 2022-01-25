@@ -12,4 +12,6 @@ public interface IComputadoraService {
 	//Type y Named
 	Computadora buscarComputadoraPorMarcaType(String marca);
 	Computadora buscarComputadoraPorMarcaNamed(String marca);
+	//Native
+	Computadora buscarComputadoraPorMarcaNative(String marca);
 }

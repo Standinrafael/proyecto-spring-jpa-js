@@ -11,5 +11,6 @@ public interface IEmpresaService {
 	//Typed y Named
 	Empresa buscarEmpresaPorNombreType(String nombre);
 	Empresa buscarEmpresaPorNombreNamed(String nombre);
-	
+	//Native
+	Empresa buscarEmpresaPorNombreNative(String nombre);
 }

@@ -11,6 +11,8 @@ public interface IParqueRepo {
 	//Type y Named
 	Parque buscarParquePorPaisType(String pais);
 	Parque buscarParquePorPaisNamed(String pais);
+	//Native
+	Parque buscarParquePorPaisNative(String pais);
 	
 
 }

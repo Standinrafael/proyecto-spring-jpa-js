@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
+
 import ec.edu.uce.modelo.jpa.Empresa;
 
 @Repository
@@ -75,6 +76,19 @@ public class EmpresaRepoImpl implements IEmpresaRepo {
 		Query miQuery=this.entityManager.createNamedQuery("Empresa.buscarPorNombre");
 		miQuery.setParameter("valor", nombre);
 		
+		return (Empresa)miQuery.getSingleResult();
+	}
+	
+	/**
+	 * Este metodo es igual que el buscarEmpresaPorNombre nada mas que con NativeQuery
+	 *
+	 */
+
+	@Override
+	public Empresa buscarEmpresaPorNombreNative(String nombre) {
+		// TODO Auto-generated method stub
+		Query miQuery=this.entityManager.createNativeQuery("select * from empresa e where e.nombre=:valor",Empresa.class);
+		miQuery.setParameter("valor", nombre);
 		return (Empresa)miQuery.getSingleResult();
 	}
 
