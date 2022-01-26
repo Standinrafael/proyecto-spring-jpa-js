@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
@@ -15,6 +16,7 @@ import javax.persistence.Table;
 @NamedQueries({@NamedQuery(name="Guardia.buscarPorApellido", query="select g from Guardia g where g.apellido=:valor"),
 			   @NamedQuery(name="Guardia.buscarPorApellido1", query="select g from Guardia g where g.apellido=:valor"),
 			   @NamedQuery(name="Guardia.buscarPorApellido2", query="select g from Guardia g where g.apellido=:valor")})
+@NamedNativeQuery(name="Guardia.buscarPorApellidoNative",query="select * from guardia g where g.apellido=:valor", resultClass=Guardia.class)
 public class Guardia {
 
 	@Id
@@ -22,6 +24,7 @@ public class Guardia {
 	@SequenceGenerator(name="seq_guardia",sequenceName="seq_guardia",allocationSize=1)
 	@Column(name="id")
 	private Integer id;
+	
 	
 	@Column(name="nombre")
 	private String nombre;

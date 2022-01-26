@@ -101,13 +101,29 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 		
-		//Buscar por NamedQuery
-		Guardia gApellido=this.guardiaService.buscarGuardiaPorApellidoNative("Lopez");
-		LOG.info("El guardia es "+gApellido);
+		//Buscar por Criteria Api Or
+		Guardia gApellido=this.guardiaService.buscarGuardiaPorApellidoCriteriaApiOr("Lopez","Colon");
+		LOG.info("El guardia por Criteria API OR es "+gApellido);
+		
+		//Buscar por Criteria Api And		
+//		Guardia gApellido=this.guardiaService.buscarGuardiaPorApellidoCriteriaApiAnd("Lopez","Naciones Unidas");
+//		LOG.info("El guardia por Criteria API AND es "+gApellido);
+		
+		//Buscar por CriteriaApi
+//		Guardia gApellido=this.guardiaService.buscarGuardiaPorApellidoCriteriaApi("Lopez");
+//		LOG.info("El guardia por Criteria API es "+gApellido);
+		
+		//Buscar por NamedNativeQuery
+//		Guardia gApellido=this.guardiaService.buscarGuardiaPorApellidoNamedNative("Lopez");
+//		LOG.info("El guardia por NamedNative es "+gApellido);
+		
+		//Buscar por NativeQuery
+//		Guardia gApellido=this.guardiaService.buscarGuardiaPorApellidoNative("Lopez");
+//		LOG.info("El guardia es "+gApellido);
 		
 		//Buscar por NamedQuery
-	//	Guardia gApellido=this.guardiaService.buscarGuardiaPorApellidoNamed("Lopez");
-	//	LOG.info("El guardia es "+gApellido);
+//		Guardia gApellido=this.guardiaService.buscarGuardiaPorApellidoNamed("Lopez");
+//		LOG.info("El guardia es "+gApellido);
 		
 	    /*	
 		//Buscar po TypedQuery
