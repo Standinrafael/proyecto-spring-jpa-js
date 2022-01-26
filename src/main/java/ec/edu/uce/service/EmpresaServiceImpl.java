@@ -60,4 +60,10 @@ public class EmpresaServiceImpl implements IEmpresaService {
 		return this.empresaRepo.buscarEmpresaPorNombreNative(nombre);
 	}
 
+	@Override
+	public Empresa buscarEmpresaPorNombreCriteriaApi(String nombre) {
+		// TODO Auto-generated method stub
+		return this.empresaRepo.buscarEmpresaPorNombreCriteriaApi(nombre);
+	}
+
 }

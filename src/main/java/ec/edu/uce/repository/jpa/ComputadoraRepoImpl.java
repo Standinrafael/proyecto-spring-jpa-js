@@ -4,6 +4,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
@@ -89,6 +93,35 @@ public class ComputadoraRepoImpl implements IComputadoraRepo {
 		Query miQuery=this.entityManager.createNativeQuery("select * from computadora c where c.marca=:valor",Computadora.class);
 		miQuery.setParameter("valor", marca);
 		return (Computadora)miQuery.getSingleResult();
+	}
+	
+	/**
+	 * Este metodo es igual que el buscarComputadoraPorMarca nada mas que con CriteriaApi
+	 *
+	 */
+
+	@Override
+	public Computadora buscarComputadoraPorMarcaCriteriaApi(String marca) {
+		// TODO Auto-generated method stub
+		
+		//Especificar tipo de Query
+		CriteriaBuilder myCriteria= this.entityManager.getCriteriaBuilder();
+		
+		//Especificar tipo de retorno
+		CriteriaQuery <Computadora>myQuery= myCriteria.createQuery(Computadora.class);
+		
+		//Construir miSQL: select * from
+		Root<Computadora> myTable=myQuery.from(Computadora.class);
+		
+		//where en criteria api se conoce como predicado
+		Predicate p1=myCriteria.equal(myTable.get("marca"),marca);
+		
+		//empezamos a conformar el select
+		myQuery.select(myTable).where(p1);
+		
+		TypedQuery<Computadora> typedQuery=this.entityManager.createQuery(myQuery);
+		
+		return typedQuery.getSingleResult();
 	}
 
 }

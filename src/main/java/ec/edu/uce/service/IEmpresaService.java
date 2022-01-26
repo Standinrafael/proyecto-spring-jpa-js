@@ -13,4 +13,6 @@ public interface IEmpresaService {
 	Empresa buscarEmpresaPorNombreNamed(String nombre);
 	//Native
 	Empresa buscarEmpresaPorNombreNative(String nombre);
+	//Criteria Api
+	Empresa buscarEmpresaPorNombreCriteriaApi(String nombre);
 }

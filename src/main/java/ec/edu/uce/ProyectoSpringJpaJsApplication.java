@@ -616,7 +616,7 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 		Supermercado s3=this.supermercadoService.buscarSupermercadoPorNombreNamed("TIA");
 		LOG.info("-"+s3);
 		LOG.info("");
-		*/
+		
 		//Busqueda de otro Parametro por NatiqueQuer
 		LOG.info("");
 		LOG.info("----------------BUSQUE POR OTRO PARAMETRO: NativeQuery -----------------------------");
@@ -631,6 +631,23 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 		Supermercado s2=this.supermercadoService.buscarSupermercadoPorNombreNative("Supermaxi");
 		LOG.info("-"+s2);
 		LOG.info("");
+		*/
+		
+		//Busqueda de otroParametro por Criteria Api
+		LOG.info("");
+		LOG.info("----------------BUSQUE POR OTRO PARAMETRO: Criteria Api -----------------------------");
+		Computadora c2=this.computadoraService.buscarComputadoraPorMarcaCriteriaApi("Asus");
+		LOG.info("-"+c2);
+		Empresa e2=this.empresaService.buscarEmpresaPorNombreCriteriaApi("Whirlpool");
+		LOG.info("-"+e2);
+		Farmacia f2=this.farmaciaService.buscarFarmaciaPorNombreCriteriaApi("Sana Sana");
+		LOG.info("-"+f2);
+		Parque p2=this.parqueService.buscarParquePorPaisCriteriaApi("Estaddos Unidos");
+		LOG.info("-"+p2);
+		Supermercado s2=this.supermercadoService.buscarSupermercadoPorNombreCriteriaApi("Supermaxi");
+		LOG.info("-"+s2);
+		LOG.info("");
+		
 	}
 
 }

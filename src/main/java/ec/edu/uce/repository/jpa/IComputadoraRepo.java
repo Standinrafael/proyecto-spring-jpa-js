@@ -13,5 +13,7 @@ public interface IComputadoraRepo {
 	Computadora buscarComputadoraPorMarcaNamed(String marca);
 	//Native
 	Computadora buscarComputadoraPorMarcaNative(String marca);
+	//Criteria Api
+	Computadora buscarComputadoraPorMarcaCriteriaApi(String marca);
 
 }

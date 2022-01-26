@@ -13,6 +13,8 @@ public interface IParqueRepo {
 	Parque buscarParquePorPaisNamed(String pais);
 	//Native
 	Parque buscarParquePorPaisNative(String pais);
+	//Criteria Api
+	Parque buscarParquePorPaisCriteriaApi(String pais);
 	
 
 }

@@ -61,4 +61,10 @@ public class ParqueServiceImpl implements IParqueService {
 		return this.parqueRepo.buscarParquePorPaisNative(pais);
 	}
 
+	@Override
+	public Parque buscarParquePorPaisCriteriaApi(String pais) {
+		// TODO Auto-generated method stub
+		return this.parqueRepo.buscarParquePorPaisCriteriaApi(pais);
+	}
+
 }

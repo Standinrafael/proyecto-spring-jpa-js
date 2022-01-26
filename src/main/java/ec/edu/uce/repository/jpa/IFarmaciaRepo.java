@@ -14,4 +14,6 @@ public interface IFarmaciaRepo {
 	Farmacia buscarFarmaciaPorNombreNamed(String nombre);
 	//Native
 	Farmacia buscarFarmaciaPorNombreNative(String nombre);
+	//Criteria Api
+	Farmacia buscarFarmaciaPorNombreCriteriaApi(String nombre);
 }

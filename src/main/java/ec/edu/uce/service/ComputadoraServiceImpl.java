@@ -61,4 +61,10 @@ public class ComputadoraServiceImpl implements IComputadoraService {
 		return this.computadoraRepo.buscarComputadoraPorMarcaNative(marca);
 	}
 
+	@Override
+	public Computadora buscarComputadoraPorMarcaCriteriaApi(String marca) {
+		// TODO Auto-generated method stub
+		return this.computadoraRepo.buscarComputadoraPorMarcaCriteriaApi(marca);
+	}
+
 }
