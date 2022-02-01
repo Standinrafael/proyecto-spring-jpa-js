@@ -1,5 +1,12 @@
 package ec.edu.uce;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
+import java.time.Month;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +15,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import ec.edu.uce.modelo.jpa.Computadora;
+import ec.edu.uce.modelo.jpa.DetalleFactura;
 import ec.edu.uce.modelo.jpa.Empresa;
+import ec.edu.uce.modelo.jpa.Factura;
 import ec.edu.uce.modelo.jpa.Farmacia;
 import ec.edu.uce.modelo.jpa.Guardia;
 import ec.edu.uce.modelo.jpa.Parque;
@@ -17,6 +26,7 @@ import ec.edu.uce.service.IComputadoraService;
 import ec.edu.uce.service.IEmpresaService;
 import ec.edu.uce.service.IEquipoService;
 import ec.edu.uce.service.IEstudianteService;
+import ec.edu.uce.service.IFacturaService;
 import ec.edu.uce.service.IFarmaciaService;
 import ec.edu.uce.service.IGestorCitaService;
 import ec.edu.uce.service.IGuardiaService;
@@ -92,6 +102,9 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 	
 	@Autowired
 	private ISupermercadoService supermercadoService;
+	
+	@Autowired
+	private IFacturaService facturaService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoSpringJpaJsApplication.class, args);
@@ -100,6 +113,40 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
+		
+		Factura miFactura= new Factura();
+		miFactura.setCedula("11111");
+		LocalDateTime miFecha= LocalDateTime.of(1989, Month.AUGUST,8,12,45);
+		miFactura.setFecha(miFecha);
+		miFactura.setNumero("123-231");
+		
+		
+		
+		//Vamos a construir la lista de detalles
+		//List es una interface
+		List<DetalleFactura> detalles= new ArrayList<>();
+		
+		
+		//Primer Detalle a agregar
+		DetalleFactura d1= new DetalleFactura();
+		d1.setCantidad(2);
+		d1.setPrecio(new BigDecimal(2.57));
+		d1.setFactura(miFactura);
+		
+		//Segund detalle
+		DetalleFactura d2= new DetalleFactura();
+		d2.setCantidad(10);
+		d2.setPrecio(new BigDecimal(10.50));
+		d2.setFactura(miFactura);
+		
+		detalles.add(d1);
+		detalles.add(d2);
+		
+		//Agregar detalle en el atributo de la factura
+		miFactura.setDetalles(detalles);
+		
+		this.facturaService.guardarFactura(miFactura);
+		
 		
 		//Buscar por NamedQuery
 	//	Guardia gApellido=this.guardiaService.buscarGuardiaPorApellidoNamed("Lopez");
@@ -585,7 +632,7 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 		LOG.info("-"+p2);
 		Supermercado s2=this.supermercadoService.buscarPorNombre("Supermaxi");
 		LOG.info("-"+s2);
-		LOG.info("");*/
+		LOG.info("");
 		
 		// Busqueda por otro parametro TypedQuery
 		LOG.info("");
@@ -615,7 +662,7 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 		LOG.info("-"+p3);
 		Supermercado s3=this.supermercadoService.buscarSupermercadoPorNombreNamed("TIA");
 		LOG.info("-"+s3);
-		LOG.info("");
+		LOG.info("");*/
 	}
 
 }
