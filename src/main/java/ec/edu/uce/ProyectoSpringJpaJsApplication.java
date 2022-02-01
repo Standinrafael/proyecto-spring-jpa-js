@@ -1,5 +1,11 @@
 package ec.edu.uce;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.time.Month;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,12 +13,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import ec.edu.uce.modelo.jpa.Computadora;
-import ec.edu.uce.modelo.jpa.Empresa;
-import ec.edu.uce.modelo.jpa.Farmacia;
-import ec.edu.uce.modelo.jpa.Guardia;
-import ec.edu.uce.modelo.jpa.Parque;
-import ec.edu.uce.modelo.jpa.Supermercado;
+import ec.edu.uce.modelo.jpa.DetalleMulta;
+import ec.edu.uce.modelo.jpa.Multa;
 import ec.edu.uce.service.IComputadoraService;
 import ec.edu.uce.service.IEmpresaService;
 import ec.edu.uce.service.IEquipoService;
@@ -24,6 +26,7 @@ import ec.edu.uce.service.IGuiaTelefonicaService;
 import ec.edu.uce.service.IHotelService;
 import ec.edu.uce.service.ILibroService;
 import ec.edu.uce.service.IMateriaService;
+import ec.edu.uce.service.IMultaService;
 import ec.edu.uce.service.IPacienteService;
 import ec.edu.uce.service.IParqueService;
 import ec.edu.uce.service.IPeliculaService;
@@ -92,6 +95,9 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 	
 	@Autowired
 	private ISupermercadoService supermercadoService;
+	
+	@Autowired
+	private IMultaService multaService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoSpringJpaJsApplication.class, args);
@@ -100,6 +106,36 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
+		
+		//Multa
+		Multa miMulta= new Multa();
+		miMulta.setNombre("Jorge");
+		miMulta.setApellido("Sanchez");
+		miMulta.setCedula("1105166290");
+		LocalDateTime miFecha=LocalDateTime.of(2015, Month.JANUARY,8,15,30);
+		miMulta.setFecha(miFecha);
+		
+		//Constuir lista de detalles
+		List<DetalleMulta> detalles= new ArrayList<>();
+		
+		DetalleMulta d1= new DetalleMulta();
+		d1.setDescirpcion("Circular sin placa");
+		d1.setCosto(new BigDecimal(35.00));
+		d1.setMulta(miMulta);
+		
+		//Segundo Detalle
+		DetalleMulta d2= new DetalleMulta();
+		d2.setDescirpcion("Conducir mientras habla en el celular");
+		d2.setCosto(new BigDecimal(55.00));
+		d2.setMulta(miMulta);
+		
+		detalles.add(d1);
+		detalles.add(d2);
+		
+		//Agregar detalle en atributo dde multa
+		miMulta.setDetalles(detalles);
+		
+		this.multaService.guardarMulta(miMulta);
 		
 		//Buscar por NamedQuery
 	//	Guardia gApellido=this.guardiaService.buscarGuardiaPorApellidoNamed("Lopez");
@@ -585,7 +621,7 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 		LOG.info("-"+p2);
 		Supermercado s2=this.supermercadoService.buscarPorNombre("Supermaxi");
 		LOG.info("-"+s2);
-		LOG.info("");*/
+		LOG.info("");
 		
 		// Busqueda por otro parametro TypedQuery
 		LOG.info("");
@@ -615,7 +651,7 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 		LOG.info("-"+p3);
 		Supermercado s3=this.supermercadoService.buscarSupermercadoPorNombreNamed("TIA");
 		LOG.info("-"+s3);
-		LOG.info("");
+		LOG.info("");*/
 	}
 
 }
