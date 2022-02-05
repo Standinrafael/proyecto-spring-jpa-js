@@ -2,7 +2,6 @@ package ec.edu.uce;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,14 +13,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import ec.edu.uce.modelo.jpa.Computadora;
+import ec.edu.uce.modelo.jpa.Ciudadano;
 import ec.edu.uce.modelo.jpa.DetalleFactura;
-import ec.edu.uce.modelo.jpa.Empresa;
+import ec.edu.uce.modelo.jpa.Empleado;
 import ec.edu.uce.modelo.jpa.Factura;
-import ec.edu.uce.modelo.jpa.Farmacia;
-import ec.edu.uce.modelo.jpa.Guardia;
-import ec.edu.uce.modelo.jpa.Parque;
-import ec.edu.uce.modelo.jpa.Supermercado;
+import ec.edu.uce.service.ICiudadanoService;
 import ec.edu.uce.service.IComputadoraService;
 import ec.edu.uce.service.IEmpresaService;
 import ec.edu.uce.service.IEquipoService;
@@ -105,6 +101,9 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 	
 	@Autowired
 	private IFacturaService facturaService;
+	
+	@Autowired
+	private ICiudadanoService ciudadanoService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoSpringJpaJsApplication.class, args);
@@ -114,7 +113,22 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 		
-		Factura miFactura= new Factura();
+		//CiudadanoService
+		Ciudadano miCiudadano= new Ciudadano();
+		miCiudadano.setNombre("Juan");
+		miCiudadano.setApellido("Perez");
+		
+		Empleado e1= new Empleado();
+		e1.setIess("adasdasd");
+		e1.setSalario(new BigDecimal(50.50));
+		e1.setCiudadano(miCiudadano);
+		
+		miCiudadano.setEmpleado(e1);
+		
+		this.ciudadanoService.guardarCiudadano(miCiudadano);
+		
+		//Facttura
+	/*	Factura miFactura= new Factura();
 		miFactura.setCedula("11111");
 		LocalDateTime miFecha= LocalDateTime.of(1989, Month.AUGUST,8,12,45);
 		miFactura.setFecha(miFecha);
