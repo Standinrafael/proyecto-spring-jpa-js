@@ -1,5 +1,9 @@
 package ec.edu.uce;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.time.Month;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,12 +11,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import ec.edu.uce.modelo.jpa.Computadora;
-import ec.edu.uce.modelo.jpa.Empresa;
-import ec.edu.uce.modelo.jpa.Farmacia;
-import ec.edu.uce.modelo.jpa.Guardia;
-import ec.edu.uce.modelo.jpa.Parque;
-import ec.edu.uce.modelo.jpa.Supermercado;
+import ec.edu.uce.modelo.jpa.Carro;
+import ec.edu.uce.modelo.jpa.Persona;
+import ec.edu.uce.modelo.jpa.Profesor;
+import ec.edu.uce.modelo.jpa.Taxi;
+import ec.edu.uce.service.ICarroService;
 import ec.edu.uce.service.IComputadoraService;
 import ec.edu.uce.service.IEmpresaService;
 import ec.edu.uce.service.IEquipoService;
@@ -27,6 +30,7 @@ import ec.edu.uce.service.IMateriaService;
 import ec.edu.uce.service.IPacienteService;
 import ec.edu.uce.service.IParqueService;
 import ec.edu.uce.service.IPeliculaService;
+import ec.edu.uce.service.IPersonaService;
 import ec.edu.uce.service.IRopaService;
 import ec.edu.uce.service.ISupermercadoService;
 import ec.edu.uce.service.IUniversidadService;
@@ -92,6 +96,12 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 	
 	@Autowired
 	private ISupermercadoService supermercadoService;
+	
+	@Autowired
+	private IPersonaService personaService;
+	
+	@Autowired
+	private ICarroService carroService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoSpringJpaJsApplication.class, args);
@@ -585,7 +595,7 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 		LOG.info("-"+p2);
 		Supermercado s2=this.supermercadoService.buscarPorNombre("Supermaxi");
 		LOG.info("-"+s2);
-		LOG.info("");*/
+		LOG.info("");
 		
 		// Busqueda por otro parametro TypedQuery
 		LOG.info("");
@@ -615,7 +625,48 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 		LOG.info("-"+p3);
 		Supermercado s3=this.supermercadoService.buscarSupermercadoPorNombreNamed("TIA");
 		LOG.info("-"+s3);
-		LOG.info("");
+		LOG.info("");*/
+		
+		
+		//Relacion OneToOne
+		//Relacion uno: Persona-Profesor
+		//Una persona puede/no puede ser profesor, pero un profesor siempre será una persona.
+		LOG.info("----------INSERTAR PERSONA-PROFESOR");
+		Persona miPersona= new Persona();
+		miPersona.setNombre("Jorge");
+		miPersona.setApellido("Lozano");
+		
+		Profesor miProfesor=new Profesor();
+		miProfesor.setCarrera("Medicina");
+		miProfesor.setMateria("Histologia");
+		miProfesor.setUniversidad("Universidad Central del Ecuador");
+		miProfesor.setSueldo( new BigDecimal(800.50));
+		miProfesor.setPersona(miPersona);
+		
+		miPersona.setProfesor(miProfesor);
+		
+		this.personaService.guardarPersona(miPersona);
+		
+		//Relacion dos: Carro-Taxi
+		//Un carro puede/no puede ser un taxi, pero un taxi siempre será un carro
+		LOG.info("----------INSERTAR CARRO-TAXI");
+		Carro miCarro= new Carro();
+		miCarro.setNombrePropietario("Juan");
+		miCarro.setApellidoPropietario("Perez");
+		miCarro.setMarca("Chevorlet");
+		LocalDateTime fechaMatricula= LocalDateTime.of(2015, Month.APRIL,8,12,15);
+		miCarro.setFechaMatricula(fechaMatricula);
+		
+		Taxi miTaxi= new Taxi();
+		miTaxi.setEmpresa("24 de Mayo");
+		LocalDateTime fechaIngreso= LocalDateTime.of(2018, Month.JULY,10,13,30);
+		miTaxi.setFechaIngreso(fechaIngreso);
+		miTaxi.setCarro(miCarro);
+		
+		miCarro.setTaxi(miTaxi);
+		
+		this.carroService.guardarCarro(miCarro);
+		
 	}
 
 }
