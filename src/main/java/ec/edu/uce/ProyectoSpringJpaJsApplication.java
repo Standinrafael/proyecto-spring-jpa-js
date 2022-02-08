@@ -113,7 +113,21 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 		
-		//CiudadanoService
+		//JOIN-LEFT JOIN
+		
+//		this.facturaService.buscarPorFechaLEFTJOIN(LocalDateTime.now());
+		
+		//WHERE JOIN
+		this.facturaService.buscarPorFechaWHERE(LocalDateTime.now());
+
+//		for(Factura factura : listaFactura) {
+//			LOG.info(factura.toString());
+//		}
+		
+
+		
+		
+		/*	//CiudadanoService
 		Ciudadano miCiudadano= new Ciudadano();
 		miCiudadano.setNombre("Juan");
 		miCiudadano.setApellido("Perez");
@@ -128,7 +142,7 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 		this.ciudadanoService.guardarCiudadano(miCiudadano);
 		
 		//Facttura
-	/*	Factura miFactura= new Factura();
+		Factura miFactura= new Factura();
 		miFactura.setCedula("11111");
 		LocalDateTime miFecha= LocalDateTime.of(1989, Month.AUGUST,8,12,45);
 		miFactura.setFecha(miFecha);

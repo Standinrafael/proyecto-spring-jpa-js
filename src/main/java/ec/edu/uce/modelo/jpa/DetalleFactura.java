@@ -70,6 +70,12 @@ public class DetalleFactura {
 	public void setPrecio(BigDecimal precio) {
 		this.precio = precio;
 	}
-	
+
+//	@Override
+//	public String toString() {
+//		return "DetalleFactura [id=" + id + ", cantidad=" + cantidad + ", precio=" + precio + ", factura=" + factura
+//				+ "]";
+//	}
+//	
 	
 }
