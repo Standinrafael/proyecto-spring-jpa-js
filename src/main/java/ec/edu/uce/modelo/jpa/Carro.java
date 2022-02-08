@@ -100,5 +100,12 @@ public class Carro {
 		this.taxi = taxi;
 	}
 
+
+	@Override
+	public String toString() {
+		return "Carro [id=" + id + ", marca=" + marca + ", fechaMatricula=" + fechaMatricula + ", nombrePropietario="
+				+ nombrePropietario + ", apellidoPropietario=" + apellidoPropietario + ", taxi=" + taxi + "]";
+	}
+
 	
 }

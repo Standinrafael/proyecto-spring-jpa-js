@@ -625,7 +625,7 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 		LOG.info("-"+p3);
 		Supermercado s3=this.supermercadoService.buscarSupermercadoPorNombreNamed("TIA");
 		LOG.info("-"+s3);
-		LOG.info("");*/
+		LOG.info("");
 		
 		
 		//Relacion OneToOne
@@ -665,8 +665,20 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 		
 		miCarro.setTaxi(miTaxi);
 		
-		this.carroService.guardarCarro(miCarro);
+		this.carroService.guardarCarro(miCarro);*/
 		
+		//Busqueda por JOIN INNER
+		LOG.info("----------JOIN INNER--------------");
+		this.carroService.buscarPorFechaMatriculacionJOIN(LocalDateTime.now());
+		//Busqueda por LEFT JOIN
+		LOG.info("----------LEFT JOIN-----------------");
+		this.carroService.buscarPorFechaMatriculacionLEFTJOIN(LocalDateTime.now());
+		//Busqueda por RIGHT INNER
+		LOG.info("----------RIGHT JOIN-----------------");
+		this.carroService.buscarPorFechaMatriculacionRIGHTJOIN(LocalDateTime.now());
+		//Busqueda por WHERE
+		LOG.info("----------WHERE-------------------");
+		this.carroService.buscarPorFechaMatriculacionWHERE(LocalDateTime.now());
 	}
 
 }
