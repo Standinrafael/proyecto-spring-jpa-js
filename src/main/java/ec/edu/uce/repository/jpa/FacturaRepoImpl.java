@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 
 import ec.edu.uce.ProyectoSpringJpaJsApplication;
 import ec.edu.uce.modelo.jpa.Factura;
+import ec.edu.uce.modelo.jpa.FacturaSencilla;
 
 @Repository
 @Transactional
@@ -75,4 +76,26 @@ public class FacturaRepoImpl implements IFacturaRepo {
 		return miLista;
 	}
 
+	@Override
+	public List<Factura> buscarPorFechaJOINFETCH(LocalDateTime fecha) {
+		// TODO Auto-generated method stub
+		//mismo atributo con lo que se está relacionando
+		TypedQuery<Factura> myQuery=this.entityManager.createQuery("select f from Factura f JOIN FETCH f.detalles d where f.fecha<=:fecha",Factura.class);
+		myQuery.setParameter("fecha", fecha);
+		return myQuery.getResultList();
+	}
+
+
+	@Override
+	public List<FacturaSencilla> buscarPorFechaSencilla(LocalDateTime fecha) {
+		// TODO Auto-generated method stub
+		
+		//FacturaSencilla(String numero, String cedula)
+		TypedQuery<FacturaSencilla> myQuery=this.entityManager
+				.createQuery("select NEW ec.edu.uce.modelo.jpa.FacturaSencilla(f.numero,f.cedula) from Factura f JOIN  f.detalles d where f.fecha<=:fecha",FacturaSencilla.class);
+		myQuery.setParameter("fecha", fecha);
+		return myQuery.getResultList();
+		
+		
+	}
 }

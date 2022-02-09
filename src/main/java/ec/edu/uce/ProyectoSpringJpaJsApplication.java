@@ -1,9 +1,6 @@
 package ec.edu.uce;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.time.Month;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -13,12 +10,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import ec.edu.uce.modelo.jpa.Ciudadano;
-import ec.edu.uce.modelo.jpa.DetalleFactura;
-import ec.edu.uce.modelo.jpa.Empleado;
 import ec.edu.uce.modelo.jpa.Factura;
 import ec.edu.uce.service.ICiudadanoService;
+import ec.edu.uce.service.IClienteService;
 import ec.edu.uce.service.IComputadoraService;
+import ec.edu.uce.service.IDetalleFacturaService;
 import ec.edu.uce.service.IEmpresaService;
 import ec.edu.uce.service.IEquipoService;
 import ec.edu.uce.service.IEstudianteService;
@@ -104,6 +100,14 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 	
 	@Autowired
 	private ICiudadanoService ciudadanoService;
+	
+	@Autowired
+	private IDetalleFacturaService detalleFacturaService;
+	
+	@Autowired
+	private IClienteService clienteService;
+	
+	
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoSpringJpaJsApplication.class, args);
@@ -113,12 +117,48 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 		
+//		//Factura Sencilla
+//		List<FacturaSencilla>  lista=this.facturaService.buscarPorFechaSencilla(LocalDateTime.now());
+//		for(FacturaSencilla f:lista) {
+//	
+//			LOG.info(f.toString());
+//		}
+//		
+		//Cliente
+//		
+//		Cliente cliente= new Cliente();
+//		cliente.setNombre("Juan");
+//		
+//		List<String>lista= new ArrayList<>();
+//		lista.add("099999");
+//		lista.add("2560004");
+//		cliente.setTelefono(lista);
+//		
+//		this.clienteService.guardar(cliente);
+//		
+		
+		//JOIN FETCH
+		List<Factura> lista= this.facturaService.buscarPorFechaJOINFETCH(LocalDateTime.now());
+		for(Factura f:lista) {
+			LOG.info("Detalles:"+ f.getDetalles());
+			LOG.info(f.toString());
+		}
+//		
+//		LOG.info("-----------DETALLE FACTURA------------------");
+		
+//		List<DetalleFactura>lista2=this.detalleFacturaService.buscarProductors(new BigDecimal(1.00));
+//		for(DetalleFactura d:lista2) {
+//			LOG.info(d.toString());
+//		}
+
+//		this.detalleFacturaService.buscarProductors(new BigDecimal(1.00),LocalDateTime.now() );
+		
 		//JOIN-LEFT JOIN
 		
 //		this.facturaService.buscarPorFechaLEFTJOIN(LocalDateTime.now());
 		
 		//WHERE JOIN
-		this.facturaService.buscarPorFechaWHERE(LocalDateTime.now());
+//		this.facturaService.buscarPorFechaWHERE(LocalDateTime.now());
 
 //		for(Factura factura : listaFactura) {
 //			LOG.info(factura.toString());

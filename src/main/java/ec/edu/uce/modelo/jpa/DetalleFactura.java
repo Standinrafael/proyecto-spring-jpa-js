@@ -71,11 +71,10 @@ public class DetalleFactura {
 		this.precio = precio;
 	}
 
-//	@Override
-//	public String toString() {
-//		return "DetalleFactura [id=" + id + ", cantidad=" + cantidad + ", precio=" + precio + ", factura=" + factura
-//				+ "]";
-//	}
-//	
+	@Override
+	public String toString() {
+		return "DetalleFactura [id=" + id + ", cantidad=" + cantidad + ", precio=" + precio + "]";
+	}
+	
 	
 }
