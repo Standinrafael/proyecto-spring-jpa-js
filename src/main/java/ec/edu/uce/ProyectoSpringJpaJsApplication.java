@@ -1,6 +1,6 @@
 package ec.edu.uce;
 
-import java.time.LocalDateTime;
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -10,7 +10,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import ec.edu.uce.modelo.jpa.Factura;
+import ec.edu.uce.modelo.jpa.Turista;
 import ec.edu.uce.service.ICiudadanoService;
 import ec.edu.uce.service.IClienteService;
 import ec.edu.uce.service.IComputadoraService;
@@ -31,6 +31,7 @@ import ec.edu.uce.service.IParqueService;
 import ec.edu.uce.service.IPeliculaService;
 import ec.edu.uce.service.IRopaService;
 import ec.edu.uce.service.ISupermercadoService;
+import ec.edu.uce.service.ITuristaService;
 import ec.edu.uce.service.IUniversidadService;
 import ec.edu.uce.service.IVideoJuegoService;
 
@@ -107,6 +108,9 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 	@Autowired
 	private IClienteService clienteService;
 	
+	@Autowired
+	private ITuristaService turistaService;
+	
 	
 
 	public static void main(String[] args) {
@@ -116,6 +120,27 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
+		
+		//Insertar Turista
+		Turista t1= new Turista();
+		t1.setNombre("Pedro");
+		t1.setValor(new BigDecimal(500.00));
+		t1.setAbono(new BigDecimal(150.00));
+		
+		Turista t2= new Turista();
+		t2.setNombre("Maria");
+		t2.setValor(new BigDecimal(350.00));
+		t2.setAbono(new BigDecimal(75.50));
+		
+		this.turistaService.insertarTurista(t1);
+		this.turistaService.insertarTurista(t2);
+		
+		//Imprimir turistas con el saldo ya calculado
+		List<Turista> listaSaldoTuristas=this.turistaService.obtenerTodosTuristas();
+		for(Turista turista: listaSaldoTuristas) {
+			LOG.info(turista.toString());
+		}
+		
 		
 //		//Factura Sencilla
 //		List<FacturaSencilla>  lista=this.facturaService.buscarPorFechaSencilla(LocalDateTime.now());
@@ -137,13 +162,13 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 //		this.clienteService.guardar(cliente);
 //		
 		
-		//JOIN FETCH
-		List<Factura> lista= this.facturaService.buscarPorFechaJOINFETCH(LocalDateTime.now());
-		for(Factura f:lista) {
-			LOG.info("Detalles:"+ f.getDetalles());
-			LOG.info(f.toString());
-		}
-//		
+//		//JOIN FETCH
+//		List<Factura> lista= this.facturaService.buscarPorFechaJOINFETCH(LocalDateTime.now());
+//		for(Factura f:lista) {
+//			LOG.info("Detalles:"+ f.getDetalles());
+//			LOG.info(f.toString());
+//		}
+////		
 //		LOG.info("-----------DETALLE FACTURA------------------");
 		
 //		List<DetalleFactura>lista2=this.detalleFacturaService.buscarProductors(new BigDecimal(1.00));
