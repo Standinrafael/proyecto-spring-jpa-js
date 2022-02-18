@@ -101,10 +101,10 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 		
-		//Buscar por Criteria Api Or
-		Guardia gApellido=this.guardiaService.buscarGuardiaPorApellidoCriteriaApiOr("Lopez","Colon");
-		LOG.info("El guardia por Criteria API OR es "+gApellido);
-		
+//		//Buscar por Criteria Api Or
+//		Guardia gApellido=this.guardiaService.buscarGuardiaPorApellidoCriteriaApiOr("Lopez","Colon");
+//		LOG.info("El guardia por Criteria API OR es "+gApellido);
+//		
 		//Buscar por Criteria Api And		
 //		Guardia gApellido=this.guardiaService.buscarGuardiaPorApellidoCriteriaApiAnd("Lopez","Naciones Unidas");
 //		LOG.info("El guardia por Criteria API AND es "+gApellido);
@@ -636,6 +636,7 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 		Supermercado s3=this.supermercadoService.buscarSupermercadoPorNombreNamed("TIA");
 		LOG.info("-"+s3);
 		LOG.info("");*/
+	
 	}
 
 }
