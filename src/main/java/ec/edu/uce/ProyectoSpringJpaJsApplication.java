@@ -138,8 +138,10 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 		c2.setSaldo(new BigDecimal("75.25"));
 		c2.setTipo("Corriente");
 		
-		this.cuentaService.insertarCuentaBancaria(c1);
-		this.cuentaService.insertarCuentaBancaria(c2);
+//		this.cuentaService.insertarCuentaBancaria(c1);
+//		this.cuentaService.insertarCuentaBancaria(c2);
+		
+		this.cuentaService.realizarTransferencia("12345", "5678", new BigDecimal(20));
 		
 		
 //		//Insertar Turista
