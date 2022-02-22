@@ -1,7 +1,6 @@
 package ec.edu.uce;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,10 +9,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import ec.edu.uce.modelo.jpa.Turista;
+import ec.edu.uce.modelo.jpa.CuentaBancaria;
 import ec.edu.uce.service.ICiudadanoService;
 import ec.edu.uce.service.IClienteService;
 import ec.edu.uce.service.IComputadoraService;
+import ec.edu.uce.service.ICuentaBancariaService;
 import ec.edu.uce.service.IDetalleFacturaService;
 import ec.edu.uce.service.IEmpresaService;
 import ec.edu.uce.service.IEquipoService;
@@ -111,6 +111,9 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 	@Autowired
 	private ITuristaService turistaService;
 	
+	@Autowired
+	private ICuentaBancariaService cuentaService;
+	
 	
 
 	public static void main(String[] args) {
@@ -121,26 +124,44 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 		
-		//Insertar Turista
-		Turista t1= new Turista();
-		t1.setNombre("Pedro");
-		t1.setValor(new BigDecimal(500.00));
-		t1.setAbono(new BigDecimal(150.00));
+		//Cuenta Bancaria
 		
-		Turista t2= new Turista();
-		t2.setNombre("Maria");
-		t2.setValor(new BigDecimal(350.00));
-		t2.setAbono(new BigDecimal(75.50));
+		CuentaBancaria c1= new CuentaBancaria();
+		c1.setClienteCedula("1105166230");
+		c1.setNumero("12345");
+		c1.setSaldo(new BigDecimal("100.50"));
+		c1.setTipo("Ahorro");
 		
-		this.turistaService.insertarTurista(t1);
-		this.turistaService.insertarTurista(t2);
+		CuentaBancaria c2=new CuentaBancaria();
+		c2.setClienteCedula("031265489");
+		c2.setNumero("5678");
+		c2.setSaldo(new BigDecimal("75.25"));
+		c2.setTipo("Corriente");
 		
-		//Imprimir turistas con el saldo ya calculado
-		List<Turista> listaSaldoTuristas=this.turistaService.obtenerTodosTuristas();
-		for(Turista turista: listaSaldoTuristas) {
-			LOG.info(turista.toString());
-		}
+		this.cuentaService.insertarCuentaBancaria(c1);
+		this.cuentaService.insertarCuentaBancaria(c2);
 		
+		
+//		//Insertar Turista
+//		Turista t1= new Turista();
+//		t1.setNombre("Pedro");
+//		t1.setValor(new BigDecimal(500.00));
+//		t1.setAbono(new BigDecimal(150.00));
+//		
+//		Turista t2= new Turista();
+//		t2.setNombre("Maria");
+//		t2.setValor(new BigDecimal(350.00));
+//		t2.setAbono(new BigDecimal(75.50));
+//		
+//		this.turistaService.insertarTurista(t1);
+//		this.turistaService.insertarTurista(t2);
+//		
+//		//Imprimir turistas con el saldo ya calculado
+//		List<Turista> listaSaldoTuristas=this.turistaService.obtenerTodosTuristas();
+//		for(Turista turista: listaSaldoTuristas) {
+//			LOG.info(turista.toString());
+//		}
+//		
 		
 //		//Factura Sencilla
 //		List<FacturaSencilla>  lista=this.facturaService.buscarPorFechaSencilla(LocalDateTime.now());
