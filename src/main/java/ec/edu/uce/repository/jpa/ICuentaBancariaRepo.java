@@ -6,6 +6,7 @@ public interface ICuentaBancariaRepo {
 
 	void insertarCuentaBancaria(CuentaBancaria cuenta);
 	void actualizarCuentaBancaria(CuentaBancaria cuenta);
+	void actualizarCuentaBancaria2(CuentaBancaria cuenta);
 	
 	CuentaBancaria buscarPorNumero(String numero);
 }
