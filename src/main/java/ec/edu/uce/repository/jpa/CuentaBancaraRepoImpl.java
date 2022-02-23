@@ -46,12 +46,12 @@ public class CuentaBancaraRepoImpl implements ICuentaBancariaRepo {
 	public void actualizarCuentaBancaria2(CuentaBancaria cuenta) {
 		// TODO Auto-generated method stub
 		this.entityManager.merge(cuenta);
-		throw new ArrayIndexOutOfBoundsException();
-//		try {
-//			throw new ArrayIndexOutOfBoundsException();
-//		}catch(ArrayIndexOutOfBoundsException e){
-//			LOG.error("ERROR");
-//		}
+//		throw new ArrayIndexOutOfBoundsException();
+		try {
+			throw new ArrayIndexOutOfBoundsException();
+		}catch(ArrayIndexOutOfBoundsException e){
+			LOG.error("ERROR");
+		}
 		
 	}
 
