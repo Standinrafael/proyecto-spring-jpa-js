@@ -5,9 +5,12 @@ import java.time.LocalDateTime;
 
 import javax.transaction.Transactional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ec.edu.uce.ProyectoSpringJpaJsApplication;
 import ec.edu.uce.modelo.jpa.Consumo;
 import ec.edu.uce.modelo.jpa.TarjetaCredito;
 import ec.edu.uce.repository.jpa.IConsumoRepo;
@@ -15,6 +18,8 @@ import ec.edu.uce.repository.jpa.IConsumoRepo;
 @Service
 public class ConsumoServiceImpl implements IConsumoService {
 
+	private static final Logger LOG = LoggerFactory.getLogger(ConsumoServiceImpl.class);
+	
 	@Autowired
 	private IConsumoRepo consumoRepo;
 	
@@ -47,9 +52,18 @@ public class ConsumoServiceImpl implements IConsumoService {
 		consumo.setTarjeta(tarjetaCre);
 		consumo.setFechaConsumo(null);
 		
-		
+		LOG.info("Antes de insertar el consumo");
 		this.consumoRepo.insertarConsumo(consumo);
-		this.tarjetaService.actualizarTarjetaCredito(tarjetaCre);
+		LOG.info("Despues de insertar el consumo");
+		LOG.info("Antes de actualizar la Tarjeta de Credito");
+		
+		try {
+			this.tarjetaService.actualizarTarjetaCreditoException(tarjetaCre);
+		}catch(ArithmeticException e) {
+			LOG.error("ERROR ARITMETICO");
+		}
+		
+		LOG.info("Despues de actualizar la Tarjeta de Credito");
 		
 	}
 

@@ -31,4 +31,10 @@ public class TarjetaCreditoServiceImpl implements ITarjetaCreditoService {
 		return this.tarjetaRepo.buscarPorNumero(numero);
 	}
 
+	@Override
+	public void actualizarTarjetaCreditoException(TarjetaCredito tarjeta) {
+		// TODO Auto-generated method stub
+		this.tarjetaRepo.actualizarTarjetaCreditoException(tarjeta);
+	}
+
 }

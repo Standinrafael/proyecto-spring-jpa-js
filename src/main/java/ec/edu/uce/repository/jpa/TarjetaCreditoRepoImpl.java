@@ -5,8 +5,11 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import ec.edu.uce.ProyectoSpringJpaJsApplication;
 import ec.edu.uce.modelo.jpa.CuentaBancaria;
 import ec.edu.uce.modelo.jpa.TarjetaCredito;
 
@@ -14,6 +17,8 @@ import ec.edu.uce.modelo.jpa.TarjetaCredito;
 @Transactional
 public class TarjetaCreditoRepoImpl implements ITarjetaCreditoRepo {
 
+	private static final Logger LOG = LoggerFactory.getLogger(TarjetaCreditoRepoImpl.class);
+	
 	@PersistenceContext
 	private EntityManager entityManager;
 	
@@ -27,6 +32,7 @@ public class TarjetaCreditoRepoImpl implements ITarjetaCreditoRepo {
 	public void actualizarTarjetaCredito(TarjetaCredito tarjeta) {
 		// TODO Auto-generated method stub
 		this.entityManager.merge(tarjeta);
+	
 	}
 
 	@Override
@@ -36,6 +42,13 @@ public class TarjetaCreditoRepoImpl implements ITarjetaCreditoRepo {
 				.createQuery("select t from TarjetaCredito t where t.numero=: numero", TarjetaCredito.class);
 		miTypedQuery.setParameter("numero", numero);
 		return miTypedQuery.getSingleResult();
+	}
+
+	@Override
+	public void actualizarTarjetaCreditoException(TarjetaCredito tarjeta) {
+		// TODO Auto-generated method stub
+		this.entityManager.merge(tarjeta);
+		throw new ArithmeticException();
 	}
 
 }

@@ -146,7 +146,7 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 //		this.tarjetaService.insertarTarjetaCredito(tarjeta1);
 //		this.tarjetaService.insertarTarjetaCredito(tarjeta2);
 		
-		this.consumoService.realizarTransferencia("987654321", LocalDateTime.now(), new BigDecimal ("1000"));
+		this.consumoService.realizarTransferencia("123456789", LocalDateTime.now(), new BigDecimal ("500"));
 		
 		//Cuenta Bancaria
 		
