@@ -48,7 +48,13 @@ public class TarjetaCreditoRepoImpl implements ITarjetaCreditoRepo {
 	public void actualizarTarjetaCreditoException(TarjetaCredito tarjeta) {
 		// TODO Auto-generated method stub
 		this.entityManager.merge(tarjeta);
-		throw new ArithmeticException();
+		
+		try {
+			throw new ArithmeticException();
+		}catch(ArithmeticException e) {
+			LOG.error("ERROR ARITMETICO");
+		}
+		
 	}
 
 }

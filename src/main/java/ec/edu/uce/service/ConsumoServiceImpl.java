@@ -50,18 +50,18 @@ public class ConsumoServiceImpl implements IConsumoService {
 		consumo.setFechaConsumo(fechaConsumo);
 		consumo.setConsumo(valorTransferencia);
 		consumo.setTarjeta(tarjetaCre);
-		consumo.setFechaConsumo(null);
+	//	consumo.setFechaConsumo(null);
 		
 		LOG.info("Antes de insertar el consumo");
 		this.consumoRepo.insertarConsumo(consumo);
 		LOG.info("Despues de insertar el consumo");
 		LOG.info("Antes de actualizar la Tarjeta de Credito");
 		
-		try {
+//		try {
 			this.tarjetaService.actualizarTarjetaCreditoException(tarjetaCre);
-		}catch(ArithmeticException e) {
-			LOG.error("ERROR ARITMETICO");
-		}
+//		}catch(ArithmeticException e) {
+//			LOG.error("ERROR ARITMETICO");
+//		}
 		
 		LOG.info("Despues de actualizar la Tarjeta de Credito");
 		
