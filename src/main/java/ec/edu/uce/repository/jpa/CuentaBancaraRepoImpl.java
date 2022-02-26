@@ -4,6 +4,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
+import javax.transaction.Transactional.TxType;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,7 +31,9 @@ public class CuentaBancaraRepoImpl implements ICuentaBancariaRepo {
 	@Override
 	public void actualizarCuentaBancaria(CuentaBancaria cuenta)  {
 		// TODO Auto-generated method stub
+		
 		this.entityManager.merge(cuenta);
+		throw new ArrayIndexOutOfBoundsException();
 	}
 
 	@Override
@@ -43,15 +46,16 @@ public class CuentaBancaraRepoImpl implements ICuentaBancariaRepo {
 	}
 
 	@Override
+	@Transactional(value=TxType.REQUIRES_NEW)
 	public void actualizarCuentaBancaria2(CuentaBancaria cuenta) {
 		// TODO Auto-generated method stub
 		this.entityManager.merge(cuenta);
 //		throw new ArrayIndexOutOfBoundsException();
-		try {
-			throw new ArrayIndexOutOfBoundsException();
-		}catch(ArrayIndexOutOfBoundsException e){
-			LOG.error("ERROR");
-		}
+		//try {
+	//		throw new ArrayIndexOutOfBoundsException();
+	//	}catch(ArrayIndexOutOfBoundsException e){
+		//	LOG.error("ERROR");
+	//	}
 		
 	}
 

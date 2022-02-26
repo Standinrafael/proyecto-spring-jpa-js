@@ -28,7 +28,7 @@ public class CuentaBancariaServiceImpl implements ICuentaBancariaService {
 	}
 
 	@Override
-	public void actualizarCuentaBancaria(CuentaBancaria cuenta) throws ArrayIndexOutOfBoundsException {
+	public void actualizarCuentaBancaria(CuentaBancaria cuenta)  {
 		// TODO Auto-generated method stub
 		this.cuentaRepo.actualizarCuentaBancaria(cuenta);
 	}
@@ -54,16 +54,21 @@ public class CuentaBancariaServiceImpl implements ICuentaBancariaService {
 	//	cuentaDesti.setTipo(null);
 		
 		LOG.info("AA1");
-		this.cuentaRepo.actualizarCuentaBancaria(cuentaOri);
+		try {
+			this.cuentaRepo.actualizarCuentaBancaria(cuentaOri);
+		} catch(ArrayIndexOutOfBoundsException e) {
+			LOG.error("ERROR TRANSACCION 1");
+		}
+		
 		LOG.info("DA1");
 		
 		LOG.info("AA2");
-		this.cuentaRepo.actualizarCuentaBancaria2(cuentaDesti);
-//		try {
-//			this.cuentaRepo.actualizarCuentaBancaria2(cuentaDesti);
-//		} catch(ArrayIndexOutOfBoundsException e) {
-//			LOG.error("ERROR");
-//		}
+	//	this.cuentaRepo.actualizarCuentaBancaria2(cuentaDesti);
+		try {
+			this.cuentaRepo.actualizarCuentaBancaria2(cuentaDesti);
+		} catch(ArrayIndexOutOfBoundsException e) {
+			LOG.error("ERROR");
+		}
 		
 		LOG.info("DA2");
 		
