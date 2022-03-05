@@ -27,13 +27,17 @@ public class CuentaBancaraRepoImpl implements ICuentaBancariaRepo {
 		// TODO Auto-generated method stub
 		this.entityManager.persist(cuenta);
 	}
+	
+	
+	
 
 	@Override
+	@Transactional(value=TxType.MANDATORY)
 	public void actualizarCuentaBancaria(CuentaBancaria cuenta)  {
 		// TODO Auto-generated method stub
 		
 		this.entityManager.merge(cuenta);
-		throw new ArrayIndexOutOfBoundsException();
+//		throw new ArrayIndexOutOfBoundsException();
 	}
 
 	@Override
@@ -46,7 +50,7 @@ public class CuentaBancaraRepoImpl implements ICuentaBancariaRepo {
 	}
 
 	@Override
-	@Transactional(value=TxType.REQUIRES_NEW)
+	@Transactional(value=TxType.MANDATORY)
 	public void actualizarCuentaBancaria2(CuentaBancaria cuenta) {
 		// TODO Auto-generated method stub
 		this.entityManager.merge(cuenta);
@@ -59,4 +63,16 @@ public class CuentaBancaraRepoImpl implements ICuentaBancariaRepo {
 		
 	}
 
+	@Transactional(value = TxType.NEVER)
+	public void enviarMail(String asunto) {
+		LOG.info("se envia mail: "+asunto);
+		
+	}
+	
+	
+	@Transactional(value = TxType.MANDATORY)
+	public void propagacionMandatory() {
+		
+		LOG.info("Ejecucion Mandatoria");
+	}
 }

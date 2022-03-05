@@ -141,8 +141,12 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 //		this.cuentaService.insertarCuentaBancaria(c1);
 //		this.cuentaService.insertarCuentaBancaria(c2);
 		
-		this.cuentaService.realizarTransferencia("12345", "5678", new BigDecimal(30));
+		this.cuentaService.realizarTransferenciaExpressInicial("12345", "5678", new BigDecimal(20));
 		
+//		this.cuentaService.enviarEmail();
+//		this.cuentaService.enviarEmailNoT();
+		
+//		this.cuentaService.propagacionMandatory();
 		
 //		//Insertar Turista
 //		Turista t1= new Turista();
