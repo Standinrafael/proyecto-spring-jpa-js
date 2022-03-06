@@ -22,6 +22,7 @@ public class MembresiaServiceImpl implements IMembresiaService {
 	}
 
 	@Override
+	@Transactional(value=TxType.SUPPORTS)
 	public void actualizarMembresia(Membresia membresia) {
 		// TODO Auto-generated method stub
 		this.membresiaRepo.actualizarMembresia(membresia);
@@ -40,7 +41,7 @@ public class MembresiaServiceImpl implements IMembresiaService {
 	}
 
 	@Override
-	@Transactional(value=TxType.SUPPORTS)
+	@Transactional(value=TxType.NOT_SUPPORTED)
 	public Membresia buscarMembresiaPorCodigo(String codigo) {
 		// TODO Auto-generated method stub
 		return this.membresiaRepo.buscarMembresitaPorCodigo(codigo);

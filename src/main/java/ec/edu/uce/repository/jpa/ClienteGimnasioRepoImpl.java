@@ -31,6 +31,7 @@ public class ClienteGimnasioRepoImpl implements IClienteGimnasioRepo {
 	}
 
 	@Override
+	@Transactional(value=TxType.MANDATORY)
 	public void actualizarClienteGimnasio(ClienteGimnasio cliente) {
 		// TODO Auto-generated method stub
 		this.entityManager.merge(cliente);
@@ -50,7 +51,7 @@ public class ClienteGimnasioRepoImpl implements IClienteGimnasioRepo {
 	}
 
 	@Override
-	@Transactional(value=TxType.MANDATORY)
+	
 	public ClienteGimnasio buscarClientePorCedula(String cedula) {
 		// TODO Auto-generated method stub
 		

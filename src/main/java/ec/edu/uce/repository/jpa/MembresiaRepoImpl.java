@@ -31,6 +31,7 @@ public class MembresiaRepoImpl implements IMembresiaRepo {
 	}
 
 	@Override
+	@Transactional(value=TxType.MANDATORY)
 	public void actualizarMembresia(Membresia membresia) {
 		// TODO Auto-generated method stub
 		this.entityManager.merge(membresia);
@@ -50,7 +51,6 @@ public class MembresiaRepoImpl implements IMembresiaRepo {
 	}
 
 	@Override
-	@Transactional(value=TxType.MANDATORY)
 	public Membresia buscarMembresitaPorCodigo(String codigo) {
 		// TODO Auto-generated method stub
 		

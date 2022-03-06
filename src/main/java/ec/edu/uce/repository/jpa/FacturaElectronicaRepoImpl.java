@@ -52,7 +52,6 @@ public class FacturaElectronicaRepoImpl implements IFacturaElectronicaRepo {
 	}
 
 	@Override
-	@Transactional(value=TxType.MANDATORY)
 	public FacturaElectronica buscarFacturaPorCedulaCliente(String cedula) {
 		// TODO Auto-generated method stub
 		try {

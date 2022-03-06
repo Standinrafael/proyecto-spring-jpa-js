@@ -41,7 +41,7 @@ public class FacturaElectronicaServiceImpl implements IFacturaElectronicaService
 	}
 
 	@Override
-	@Transactional(value=TxType.SUPPORTS)
+	@Transactional(value=TxType.NOT_SUPPORTED)
 	public FacturaElectronica buscarFacturaPorCedulaCliente(String cedula) {
 		// TODO Auto-generated method stub
 		return this.facturaRepo.buscarFacturaPorCedulaCliente(cedula);

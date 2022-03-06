@@ -22,6 +22,7 @@ public class ClienteGimnasioServiceImpl implements IClienteGimnasioService {
 	}
 
 	@Override
+	@Transactional(value=TxType.SUPPORTS)
 	public void actualizarClienteGimnasio(ClienteGimnasio cliente) {
 		// TODO Auto-generated method stub
 		this.clienteRepo.actualizarClienteGimnasio(cliente);
@@ -40,7 +41,7 @@ public class ClienteGimnasioServiceImpl implements IClienteGimnasioService {
 	}
 
 	@Override
-	@Transactional(value=TxType.SUPPORTS)
+	@Transactional(value=TxType.NOT_SUPPORTED)
 	public ClienteGimnasio buscarClientePorCedula(String cedula) {
 		// TODO Auto-generated method stub
 		return this.clienteRepo.buscarClientePorCedula(cedula);
