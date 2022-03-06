@@ -1,8 +1,8 @@
 package ec.edu.uce;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.time.Month;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,10 +11,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import ec.edu.uce.modelo.jpa.Cuenta;
-import ec.edu.uce.modelo.jpa.Habiente;
+import ec.edu.uce.modelo.jpa.ClienteGimnasio;
+import ec.edu.uce.modelo.jpa.Membresia;
 import ec.edu.uce.service.ICiudadanoService;
-import ec.edu.uce.service.IClienteService;
+import ec.edu.uce.service.IClienteGimnasioService;
 import ec.edu.uce.service.IComputadoraService;
 import ec.edu.uce.service.IConsumoService;
 import ec.edu.uce.service.ICuentaService;
@@ -22,16 +22,18 @@ import ec.edu.uce.service.IDetalleFacturaService;
 import ec.edu.uce.service.IEmpresaService;
 import ec.edu.uce.service.IEquipoService;
 import ec.edu.uce.service.IEstudianteService;
-import ec.edu.uce.service.IFacturaService;
+import ec.edu.uce.service.IFacturaElectronicaService;
 import ec.edu.uce.service.IFarmaciaService;
 import ec.edu.uce.service.IGestorCajeroService;
 import ec.edu.uce.service.IGestorCitaService;
+import ec.edu.uce.service.IGestorGimnasioService;
 import ec.edu.uce.service.IGuardiaService;
 import ec.edu.uce.service.IGuiaTelefonicaService;
 import ec.edu.uce.service.IHabienteService;
 import ec.edu.uce.service.IHotelService;
 import ec.edu.uce.service.ILibroService;
 import ec.edu.uce.service.IMateriaService;
+import ec.edu.uce.service.IMembresiaService;
 import ec.edu.uce.service.IPacienteService;
 import ec.edu.uce.service.IParqueService;
 import ec.edu.uce.service.IPeliculaService;
@@ -102,8 +104,8 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 	@Autowired
 	private ISupermercadoService supermercadoService;
 
-	@Autowired
-	private IFacturaService facturaService;
+//	@Autowired
+//	private IFacturaService facturaService;
 
 	@Autowired
 	private ICiudadanoService ciudadanoService;
@@ -111,8 +113,8 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 	@Autowired
 	private IDetalleFacturaService detalleFacturaService;
 
-	@Autowired
-	private IClienteService clienteService;
+//	@Autowired
+//	private IClienteService clienteService;
 
 	@Autowired
 	private ITuristaService turistaService;
@@ -137,6 +139,18 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 	
 	@Autowired
 	private IGestorCajeroService cajeroService;
+	
+	@Autowired
+	private IClienteGimnasioService clienteService;
+	
+	@Autowired
+	private IMembresiaService membresiaService;
+	
+	@Autowired
+	private IFacturaElectronicaService facturaService;
+	
+	@Autowired
+	private IGestorGimnasioService gimnasioService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoSpringJpaJsApplication.class, args);
@@ -146,68 +160,109 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 
-		// Cuenta Habiente
-		Habiente cuenta1 = new Habiente();
-		cuenta1.setNombre("Pablo");
-		cuenta1.setApellido("Cabrera");
-		cuenta1.setCedula("1105166299");
-
-		Habiente cuenta2 = new Habiente();
-		cuenta2.setNombre("Katherine");
-		cuenta2.setApellido("Gonzalez");
-		cuenta2.setCedula("1103456999");
-
-		// Lista de Cuentas Bancarias
-
-		List<Cuenta> primeraCuenta = new ArrayList<>();
-		List<Cuenta> segundaCuenta = new ArrayList<>();
-
-		// Cuenta Bancaria
-		Cuenta c1 = new Cuenta();
-		c1.setNumeroCuenta("12345");
-		c1.setSaldo(new BigDecimal("1000"));
-		c1.setTipo("Ahorro");
-
-		Cuenta c2 = new Cuenta();
-		c2.setNumeroCuenta("67890");
-		c2.setSaldo(new BigDecimal("10000"));
-		c2.setTipo("Corriente");
-
-		Cuenta c3 = new Cuenta();
-		c3.setNumeroCuenta("24680");
-		c3.setSaldo(new BigDecimal("500"));
-		c3.setTipo("Ahorro");
-
-		// Agregar cuentas a las listas
-		primeraCuenta.add(c1);
-		segundaCuenta.add(c2);
-		segundaCuenta.add(c3);
-
-		// Enviar las listas a cada cuenta
-		cuenta1.setCuenta(primeraCuenta);
-		cuenta2.setCuenta(segundaCuenta);
-		c1.setHabiente(cuenta1);
-		c2.setHabiente(cuenta2);
-		c3.setHabiente(cuenta2);
-
-		// Insertar cuentas
-	
-//		this.habienteService.insertarHabiente(cuenta2);
-//		this.habienteService.insertarHabiente(cuenta1);
+		//Insertar Clientes
+		ClienteGimnasio cliente1= new ClienteGimnasio();
+		cliente1.setApellido("Andrade");
+		cliente1.setNommbre("Juan");
+		cliente1.setCedula("12345");
+		cliente1.setFechaNacimiento(LocalDateTime.of(1989, Month.AUGUST,8,12,45));
+		cliente1.setEstado("No pagada");
 		
-
-		//Gestor Cajero
+		ClienteGimnasio cliente2= new ClienteGimnasio();
+		cliente2.setApellido("Villacres");
+		cliente2.setNommbre("Michelle");
+		cliente2.setCedula("01234");
+		cliente2.setFechaNacimiento(LocalDateTime.of(1997, Month.MAY,9,10,20));
+		cliente2.setEstado("No pagada");
 		
-		//Consultar cuentas bancarias de un habiente por cedula
-		LOG.info("------------Consultar Cuenta Bancarira del Habiente---------------------------");
-		this.cajeroService.consultarCuentaBancaria("1105166299");
+//		this.clienteService.insertarClienteGimnasio(cliente1);
+//		this.clienteService.insertarClienteGimnasio(cliente2);
 		
-		//Consultar saldo de una cuenta
-		LOG.info("------------Consultar Saldo de la Cuenta Bancaria---------------------------");
-		this.cajeroService.consultarSaldo("24680");
+		//Insertar Membresia
+		Membresia membresia= new Membresia();
+		membresia.setCodigo("A1");
+		membresia.setNombre("Bailoterapia");
+		membresia.setValor(new BigDecimal("30.00"));
+		membresia.setVigencia("Un mes");
+		membresia.setCantidad(0);
 		
-		//Funcionalidad que permite retirar dinero
-		this.cajeroService.realizarRetiro("12345", new BigDecimal("200.00"));
+		Membresia membresia2= new Membresia();
+		membresia2.setCodigo("C1");
+		membresia2.setNombre("Cardio");
+		membresia2.setValor(new BigDecimal("50.00"));
+		membresia2.setVigencia("Dos meses");
+		membresia2.setCantidad(0);
+		
+//		this.membresiaService.insertarMembresia(membresia);
+//		this.membresiaService.insertarMembresia(membresia2);
+		
+		
+		//Gestor
+		this.gimnasioService.registrarPago("12345", "C1");
+		this.gimnasioService.registroMembresia("01234");
+		
+//		// Cuenta Habiente
+//		Habiente cuenta1 = new Habiente();
+//		cuenta1.setNombre("Pablo");
+//		cuenta1.setApellido("Cabrera");
+//		cuenta1.setCedula("1105166299");
+//
+//		Habiente cuenta2 = new Habiente();
+//		cuenta2.setNombre("Katherine");
+//		cuenta2.setApellido("Gonzalez");
+//		cuenta2.setCedula("1103456999");
+//
+//		// Lista de Cuentas Bancarias
+//
+//		List<Cuenta> primeraCuenta = new ArrayList<>();
+//		List<Cuenta> segundaCuenta = new ArrayList<>();
+//
+//		// Cuenta Bancaria
+//		Cuenta c1 = new Cuenta();
+//		c1.setNumeroCuenta("12345");
+//		c1.setSaldo(new BigDecimal("1000"));
+//		c1.setTipo("Ahorro");
+//
+//		Cuenta c2 = new Cuenta();
+//		c2.setNumeroCuenta("67890");
+//		c2.setSaldo(new BigDecimal("10000"));
+//		c2.setTipo("Corriente");
+//
+//		Cuenta c3 = new Cuenta();
+//		c3.setNumeroCuenta("24680");
+//		c3.setSaldo(new BigDecimal("500"));
+//		c3.setTipo("Ahorro");
+//
+//		// Agregar cuentas a las listas
+//		primeraCuenta.add(c1);
+//		segundaCuenta.add(c2);
+//		segundaCuenta.add(c3);
+//
+//		// Enviar las listas a cada cuenta
+//		cuenta1.setCuenta(primeraCuenta);
+//		cuenta2.setCuenta(segundaCuenta);
+//		c1.setHabiente(cuenta1);
+//		c2.setHabiente(cuenta2);
+//		c3.setHabiente(cuenta2);
+//
+//		// Insertar cuentas
+//	
+////		this.habienteService.insertarHabiente(cuenta2);
+////		this.habienteService.insertarHabiente(cuenta1);
+//		
+//
+//		//Gestor Cajero
+//		
+//		//Consultar cuentas bancarias de un habiente por cedula
+//		LOG.info("------------Consultar Cuenta Bancarira del Habiente---------------------------");
+//		this.cajeroService.consultarCuentaBancaria("1105166299");
+//		
+//		//Consultar saldo de una cuenta
+//		LOG.info("------------Consultar Saldo de la Cuenta Bancaria---------------------------");
+//		this.cajeroService.consultarSaldo("24680");
+//		
+//		//Funcionalidad que permite retirar dinero
+//		this.cajeroService.realizarRetiro("12345", new BigDecimal("200.00"));
 
 //		//Insertar Tarjeta
 //		TarjetaCredito tarjeta1= new TarjetaCredito();
