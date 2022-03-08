@@ -136,9 +136,9 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 		this.fachadaService.realizarTransferenciaExpressInicialNoT("12345", "5678", new BigDecimal(20));
 		
 		
-		String prueba=this.personaUnary.apply("a");
-		
-		Integer b1=this.personaFunction.apply("b");
+//		String prueba=this.personaUnary.apply("a");
+//		
+//		Integer b1=this.personaFunction.apply("b");
 		
 		//Cuenta Bancaria
 		

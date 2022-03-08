@@ -9,9 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.reactive.TransactionSynchronizationManager;
+import org.springframework.transaction.support.TransactionSynchronizationManager;
 
-import ec.edu.uce.ProyectoSpringJpaJsApplication;
 import ec.edu.uce.modelo.jpa.CuentaBancaria;
 import ec.edu.uce.repository.jpa.ICuentaBancariaRepo;
 
@@ -21,6 +20,7 @@ public class CuentaBancariaServiceImpl implements ICuentaBancariaService {
 
 	private static final Logger LOG = LoggerFactory.getLogger(CuentaBancariaServiceImpl.class);
 
+	
 	@Autowired
 	private ICuentaBancariaRepo cuentaRepo;
 
