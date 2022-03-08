@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.reactive.TransactionSynchronizationManager;
 
 import ec.edu.uce.ProyectoSpringJpaJsApplication;
 import ec.edu.uce.modelo.jpa.CuentaBancaria;
@@ -102,6 +103,8 @@ public class CuentaBancariaServiceImpl implements ICuentaBancariaService {
 	@Transactional(value=TxType.REQUIRES_NEW)
 	public void realizarTransferenciaExpress(String cuentaOrigen, String cuentaDestino, BigDecimal valorTransferir) {
 
+		LOG.info("Prueba 2:"+ TransactionSynchronizationManager.isActualTransactionActive());
+		
 		LOG.info("Ejecucion Support");
 		CuentaBancaria cuentaOri = this.buscarPorNumero(cuentaOrigen);
 		CuentaBancaria cuentaDesti = this.buscarPorNumero(cuentaDestino);

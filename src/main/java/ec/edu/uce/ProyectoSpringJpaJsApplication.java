@@ -9,7 +9,9 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import ec.edu.uce.modelo.jpa.CuentaBancaria;
+import ec.edu.uce.interfaces.funcionales.IPersonaFunction;
+import ec.edu.uce.interfaces.funcionales.IPersonaUnaryOperator;
+import ec.edu.uce.service.CuentaBancariaFachadaServiceImpl;
 import ec.edu.uce.service.ICiudadanoService;
 import ec.edu.uce.service.IClienteService;
 import ec.edu.uce.service.IComputadoraService;
@@ -114,6 +116,13 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 	@Autowired
 	private ICuentaBancariaService cuentaService;
 	
+	@Autowired
+	private CuentaBancariaFachadaServiceImpl fachadaService;
+	
+	private IPersonaUnaryOperator<String> personaUnary;
+	
+	private IPersonaFunction<String,Integer> personaFunction;
+	
 	
 
 	public static void main(String[] args) {
@@ -124,24 +133,31 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 		
+		this.fachadaService.realizarTransferenciaExpressInicialNoT("12345", "5678", new BigDecimal(20));
+		
+		
+		String prueba=this.personaUnary.apply("a");
+		
+		Integer b1=this.personaFunction.apply("b");
+		
 		//Cuenta Bancaria
 		
-		CuentaBancaria c1= new CuentaBancaria();
-		c1.setClienteCedula("1105166230");
-		c1.setNumero("12345");
-		c1.setSaldo(new BigDecimal("100.50"));
-		c1.setTipo("Ahorro");
-		
-		CuentaBancaria c2=new CuentaBancaria();
-		c2.setClienteCedula("031265489");
-		c2.setNumero("5678");
-		c2.setSaldo(new BigDecimal("75.25"));
-		c2.setTipo("Corriente");
-		
-//		this.cuentaService.insertarCuentaBancaria(c1);
-//		this.cuentaService.insertarCuentaBancaria(c2);
-		
-		this.cuentaService.realizarTransferenciaExpressInicial("12345", "5678", new BigDecimal(20));
+//		CuentaBancaria c1= new CuentaBancaria();
+//		c1.setClienteCedula("1105166230");
+//		c1.setNumero("12345");
+//		c1.setSaldo(new BigDecimal("100.50"));
+//		c1.setTipo("Ahorro");
+//		
+//		CuentaBancaria c2=new CuentaBancaria();
+//		c2.setClienteCedula("031265489");
+//		c2.setNumero("5678");
+//		c2.setSaldo(new BigDecimal("75.25"));
+//		c2.setTipo("Corriente");
+//		
+////		this.cuentaService.insertarCuentaBancaria(c1);
+////		this.cuentaService.insertarCuentaBancaria(c2);
+//		
+//		this.cuentaService.realizarTransferenciaExpressInicial("12345", "5678", new BigDecimal(20));
 		
 //		this.cuentaService.enviarEmail();
 //		this.cuentaService.enviarEmailNoT();
