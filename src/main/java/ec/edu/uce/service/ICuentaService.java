@@ -13,5 +13,6 @@ public interface ICuentaService {
 	
 	List<Cuenta> buscarPorCedula(String cedula);
 	Cuenta buscarPorNumero(String numero);
+	List<Cuenta> traerCuentas();
 
 }

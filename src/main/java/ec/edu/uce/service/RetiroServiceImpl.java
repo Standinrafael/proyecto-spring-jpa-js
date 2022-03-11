@@ -1,5 +1,7 @@
 package ec.edu.uce.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +36,12 @@ public class RetiroServiceImpl implements IRetiroService {
 	public void borrarRetiroPorId(Integer id) {
 		// TODO Auto-generated method stub
 		this.retiroRepo.borrarRetiroPorId(id);
+	}
+
+	@Override
+	public List<Retiro> traerRetiros() {
+		// TODO Auto-generated method stub
+		return retiroRepo.traerRetiros();
 	}
 
 }

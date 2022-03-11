@@ -1,5 +1,7 @@
 package ec.edu.uce.service;
 
+import java.util.List;
+
 import ec.edu.uce.modelo.jpa.Retiro;
 
 public interface IRetiroService {
@@ -8,5 +10,6 @@ public interface IRetiroService {
 	void actualizarRetiro(Retiro retiro);
 	Retiro buscarRetiroPorId(Integer id);
 	void borrarRetiroPorId(Integer id);
+	List<Retiro> traerRetiros();
 	
 }

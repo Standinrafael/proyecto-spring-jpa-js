@@ -53,4 +53,10 @@ public class CuentaServiceImpl implements ICuentaService {
 		return this.cuentaRepo.buscarPorNumero(numero);
 	}
 
+	@Override
+	public List<Cuenta> traerCuentas() {
+		// TODO Auto-generated method stub
+		return this.cuentaRepo.traerCuentas();
+	}
+
 }

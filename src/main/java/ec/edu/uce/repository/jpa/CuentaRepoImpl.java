@@ -36,7 +36,7 @@ public class CuentaRepoImpl implements ICuentaRepo {
 		// TODO Auto-generated method stub
 		this.entityManager.merge(cuenta);
 		//Error de NullPointer para la excepcion
-		throw new NullPointerException();
+		//throw new NullPointerException();
 	}
 
 	@Override
@@ -85,6 +85,17 @@ public class CuentaRepoImpl implements ICuentaRepo {
 			return null;
 		}
 
+	}
+
+	@Override
+	public List<Cuenta> traerCuentas() {
+		// TODO Auto-generated method stub
+		TypedQuery<Cuenta> myQuery = this.entityManager
+				.createQuery("select c from Cuenta c,Habiente h WHERE h=c ", Cuenta.class);
+		
+
+		return myQuery.getResultList();
+		
 	}
 
 }

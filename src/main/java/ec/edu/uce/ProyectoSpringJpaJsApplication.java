@@ -1,6 +1,8 @@
 package ec.edu.uce;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +15,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import ec.edu.uce.modelo.jpa.Cuenta;
 import ec.edu.uce.modelo.jpa.Habiente;
+import ec.edu.uce.modelo.jpa.Retiro;
 import ec.edu.uce.service.ICiudadanoService;
 import ec.edu.uce.service.IClienteService;
 import ec.edu.uce.service.IComputadoraService;
@@ -156,11 +159,25 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 		cuenta2.setNombre("Katherine");
 		cuenta2.setApellido("Gonzalez");
 		cuenta2.setCedula("1103456999");
+		
+		Habiente cuenta3= new Habiente();
+		cuenta3.setNombre("Daniel");
+		cuenta3.setApellido("Carrillo");
+		cuenta3.setCedula("1105160000");
+		
+		
+		Habiente cuenta4= new Habiente();
+		cuenta4.setNombre("Juan");
+		cuenta4.setApellido("Perez");
+		cuenta4.setCedula("0123456789");
+		
 
 		// Lista de Cuentas Bancarias
 
 		List<Cuenta> primeraCuenta = new ArrayList<>();
 		List<Cuenta> segundaCuenta = new ArrayList<>();
+		List<Cuenta> terceraCuenta = new ArrayList<>();
+		List<Cuenta> cuartaCuenta = new ArrayList<>();
 
 		// Cuenta Bancaria
 		Cuenta c1 = new Cuenta();
@@ -177,37 +194,58 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 		c3.setNumeroCuenta("24680");
 		c3.setSaldo(new BigDecimal("500"));
 		c3.setTipo("Ahorro");
+		
+		Cuenta c4= new Cuenta();
+		c4.setNumeroCuenta("11111");
+		c4.setSaldo(new BigDecimal("700"));
+		c4.setTipo("Ahorro");
+		
+		Cuenta c5= new Cuenta();
+		c5.setNumeroCuenta("22222");
+		c5.setSaldo(new BigDecimal("800"));
+		c5.setTipo("Ahorro");
 
 		// Agregar cuentas a las listas
-		primeraCuenta.add(c1);
-		segundaCuenta.add(c2);
-		segundaCuenta.add(c3);
+		terceraCuenta.add(c4);
+		cuartaCuenta.add(c5);
+//		segundaCuenta.add(c3);
 
 		// Enviar las listas a cada cuenta
-		cuenta1.setCuenta(primeraCuenta);
-		cuenta2.setCuenta(segundaCuenta);
-		c1.setHabiente(cuenta1);
-		c2.setHabiente(cuenta2);
-		c3.setHabiente(cuenta2);
+		cuenta3.setCuenta(terceraCuenta);
+		cuenta4.setCuenta(cuartaCuenta);
+		c4.setHabiente(cuenta3);
+		c5.setHabiente(cuenta4);
+//		c3.setHabiente(cuenta2);
 
-		// Insertar cuentas
-	
-//		this.habienteService.insertarHabiente(cuenta2);
-//		this.habienteService.insertarHabiente(cuenta1);
+		// Insertar dos nuevas cuentas	
+			
+//		this.habienteService.insertarHabiente(cuenta3);
+//		this.habienteService.insertarHabiente(cuenta4);
 		
 
 		//Gestor Cajero
 		
 		//Consultar cuentas bancarias de un habiente por cedula
-		LOG.info("------------Consultar Cuenta Bancarira del Habiente---------------------------");
-		this.cajeroService.consultarCuentaBancaria("1105166299");
+//		LOG.info("------------Consultar Cuenta Bancarira del Habiente---------------------------");
+//		this.cajeroService.consultarCuentaBancaria("1105166299");
+//		
+//		//Consultar saldo de una cuenta
+//		LOG.info("------------Consultar Saldo de la Cuenta Bancaria---------------------------");
+//		this.cajeroService.consultarSaldo("24680");
 		
-		//Consultar saldo de una cuenta
-		LOG.info("------------Consultar Saldo de la Cuenta Bancaria---------------------------");
-		this.cajeroService.consultarSaldo("24680");
+		//LLamado a los metodos donde se aplica interfaces funcionales y lambdas
+		LOG.info("----Cuentas con Saldo mayor a $500---------------------");
+		this.cajeroService.consultaHabientes(new BigDecimal("500.00"));
 		
-		//Funcionalidad que permite retirar dinero
-		this.cajeroService.realizarRetiro("12345", new BigDecimal("200.00"));
+		LOG.info("--------Hisotiral filtrado por fechas y monto");
+		this.cajeroService.consultarHisotrial(LocalDateTime.of(2022, Month.MARCH,2,12,45), new BigDecimal("50"));
+//		
+		//Cinco retiros nuevos
+//		this.cajeroService.realizarRetiro("12345", new BigDecimal("20.00"));
+//		this.cajeroService.realizarRetiro("22222", new BigDecimal("20.00"));
+//		this.cajeroService.realizarRetiro("24680", new BigDecimal("20.00"));
+//		this.cajeroService.realizarRetiro("11111", new BigDecimal("20.00"));
+//		this.cajeroService.realizarRetiro("67890", new BigDecimal("20.00"));
 
 //		//Insertar Tarjeta
 //		TarjetaCredito tarjeta1= new TarjetaCredito();
