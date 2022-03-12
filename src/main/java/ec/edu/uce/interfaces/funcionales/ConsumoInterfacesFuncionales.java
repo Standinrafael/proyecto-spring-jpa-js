@@ -3,6 +3,7 @@ package ec.edu.uce.interfaces.funcionales;
 public class ConsumoInterfacesFuncionales {
 
 	//Recibe una interfaz
+	//Metodos que reciben una funcion/comportamiento
 	public String consumirSupplier(IPersonaSupplier<String> funcion) {
 		return funcion.get();
 			
