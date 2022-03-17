@@ -3,8 +3,6 @@ package ec.edu.uce;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.Month;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,9 +11,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import ec.edu.uce.modelo.jpa.Cuenta;
-import ec.edu.uce.modelo.jpa.Habiente;
-import ec.edu.uce.modelo.jpa.Retiro;
+import ec.edu.uce.modelo.jpa.Poliza;
 import ec.edu.uce.service.ICiudadanoService;
 import ec.edu.uce.service.IClienteService;
 import ec.edu.uce.service.IComputadoraService;
@@ -38,6 +34,7 @@ import ec.edu.uce.service.IMateriaService;
 import ec.edu.uce.service.IPacienteService;
 import ec.edu.uce.service.IParqueService;
 import ec.edu.uce.service.IPeliculaService;
+import ec.edu.uce.service.IPolizaService;
 import ec.edu.uce.service.IRetiroService;
 import ec.edu.uce.service.IRopaService;
 import ec.edu.uce.service.ISupermercadoService;
@@ -140,6 +137,9 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 	
 	@Autowired
 	private IGestorCajeroService cajeroService;
+	
+	@Autowired
+	private IPolizaService polizaService;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoSpringJpaJsApplication.class, args);
@@ -149,72 +149,87 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 
-		// Cuenta Habiente
-		Habiente cuenta1 = new Habiente();
-		cuenta1.setNombre("Pablo");
-		cuenta1.setApellido("Cabrera");
-		cuenta1.setCedula("1105166299");
-
-		Habiente cuenta2 = new Habiente();
-		cuenta2.setNombre("Katherine");
-		cuenta2.setApellido("Gonzalez");
-		cuenta2.setCedula("1103456999");
-		
-		Habiente cuenta3= new Habiente();
-		cuenta3.setNombre("Daniel");
-		cuenta3.setApellido("Carrillo");
-		cuenta3.setCedula("1105160000");
+		//Poliza
+		Poliza poliza= new Poliza();
+		poliza.setEstado("Pendiente");
+		poliza.setDescripcion("Poliza de Seguro");
+		poliza.setNumero("12345");
+		poliza.setValor(new BigDecimal("2000.00"));
+		poliza.setFechaEmision(LocalDateTime.now());
+		poliza.setFechaVigencia(LocalDateTime.of(2022, Month.JUNE,2,12,45));
 		
 		
-		Habiente cuenta4= new Habiente();
-		cuenta4.setNombre("Juan");
-		cuenta4.setApellido("Perez");
-		cuenta4.setCedula("0123456789");
+//		this.polizaService.insertarPoliza(poliza);
 		
-
-		// Lista de Cuentas Bancarias
-
-		List<Cuenta> primeraCuenta = new ArrayList<>();
-		List<Cuenta> segundaCuenta = new ArrayList<>();
-		List<Cuenta> terceraCuenta = new ArrayList<>();
-		List<Cuenta> cuartaCuenta = new ArrayList<>();
-
-		// Cuenta Bancaria
-		Cuenta c1 = new Cuenta();
-		c1.setNumeroCuenta("12345");
-		c1.setSaldo(new BigDecimal("1000"));
-		c1.setTipo("Ahorro");
-
-		Cuenta c2 = new Cuenta();
-		c2.setNumeroCuenta("67890");
-		c2.setSaldo(new BigDecimal("10000"));
-		c2.setTipo("Corriente");
-
-		Cuenta c3 = new Cuenta();
-		c3.setNumeroCuenta("24680");
-		c3.setSaldo(new BigDecimal("500"));
-		c3.setTipo("Ahorro");
 		
-		Cuenta c4= new Cuenta();
-		c4.setNumeroCuenta("11111");
-		c4.setSaldo(new BigDecimal("700"));
-		c4.setTipo("Ahorro");
 		
-		Cuenta c5= new Cuenta();
-		c5.setNumeroCuenta("22222");
-		c5.setSaldo(new BigDecimal("800"));
-		c5.setTipo("Ahorro");
-
-		// Agregar cuentas a las listas
-		terceraCuenta.add(c4);
-		cuartaCuenta.add(c5);
-//		segundaCuenta.add(c3);
-
-		// Enviar las listas a cada cuenta
-		cuenta3.setCuenta(terceraCuenta);
-		cuenta4.setCuenta(cuartaCuenta);
-		c4.setHabiente(cuenta3);
-		c5.setHabiente(cuenta4);
+		
+//		// Cuenta Habiente
+//		Habiente cuenta1 = new Habiente();
+//		cuenta1.setNombre("Pablo");
+//		cuenta1.setApellido("Cabrera");
+//		cuenta1.setCedula("1105166299");
+//
+//		Habiente cuenta2 = new Habiente();
+//		cuenta2.setNombre("Katherine");
+//		cuenta2.setApellido("Gonzalez");
+//		cuenta2.setCedula("1103456999");
+//		
+//		Habiente cuenta3= new Habiente();
+//		cuenta3.setNombre("Daniel");
+//		cuenta3.setApellido("Carrillo");
+//		cuenta3.setCedula("1105160000");
+//		
+//		
+//		Habiente cuenta4= new Habiente();
+//		cuenta4.setNombre("Juan");
+//		cuenta4.setApellido("Perez");
+//		cuenta4.setCedula("0123456789");
+//		
+//
+//		// Lista de Cuentas Bancarias
+//
+//		List<Cuenta> primeraCuenta = new ArrayList<>();
+//		List<Cuenta> segundaCuenta = new ArrayList<>();
+//		List<Cuenta> terceraCuenta = new ArrayList<>();
+//		List<Cuenta> cuartaCuenta = new ArrayList<>();
+//
+//		// Cuenta Bancaria
+//		Cuenta c1 = new Cuenta();
+//		c1.setNumeroCuenta("12345");
+//		c1.setSaldo(new BigDecimal("1000"));
+//		c1.setTipo("Ahorro");
+//
+//		Cuenta c2 = new Cuenta();
+//		c2.setNumeroCuenta("67890");
+//		c2.setSaldo(new BigDecimal("10000"));
+//		c2.setTipo("Corriente");
+//
+//		Cuenta c3 = new Cuenta();
+//		c3.setNumeroCuenta("24680");
+//		c3.setSaldo(new BigDecimal("500"));
+//		c3.setTipo("Ahorro");
+//		
+//		Cuenta c4= new Cuenta();
+//		c4.setNumeroCuenta("11111");
+//		c4.setSaldo(new BigDecimal("700"));
+//		c4.setTipo("Ahorro");
+//		
+//		Cuenta c5= new Cuenta();
+//		c5.setNumeroCuenta("22222");
+//		c5.setSaldo(new BigDecimal("800"));
+//		c5.setTipo("Ahorro");
+//
+//		// Agregar cuentas a las listas
+//		terceraCuenta.add(c4);
+//		cuartaCuenta.add(c5);
+////		segundaCuenta.add(c3);
+//
+//		// Enviar las listas a cada cuenta
+//		cuenta3.setCuenta(terceraCuenta);
+//		cuenta4.setCuenta(cuartaCuenta);
+//		c4.setHabiente(cuenta3);
+//		c5.setHabiente(cuenta4);
 //		c3.setHabiente(cuenta2);
 
 		// Insertar dos nuevas cuentas	
@@ -233,12 +248,12 @@ public class ProyectoSpringJpaJsApplication implements CommandLineRunner {
 //		LOG.info("------------Consultar Saldo de la Cuenta Bancaria---------------------------");
 //		this.cajeroService.consultarSaldo("24680");
 		
-		//LLamado a los metodos donde se aplica interfaces funcionales y lambdas
-		LOG.info("----Cuentas con Saldo mayor a $500---------------------");
-		this.cajeroService.consultaHabientes(new BigDecimal("500.00"));
-		
-		LOG.info("--------Hisotiral filtrado por fechas y monto");
-		this.cajeroService.consultarHisotrial(LocalDateTime.of(2022, Month.MARCH,2,12,45), new BigDecimal("50"));
+//		//LLamado a los metodos donde se aplica interfaces funcionales y lambdas
+//		LOG.info("----Cuentas con Saldo mayor a $500---------------------");
+//		this.cajeroService.consultaHabientes(new BigDecimal("500.00"));
+//		
+//		LOG.info("--------Hisotiral filtrado por fechas y monto");
+//		this.cajeroService.consultarHisotrial(LocalDateTime.of(2022, Month.MARCH,2,12,45), new BigDecimal("50"));
 //		
 		//Cinco retiros nuevos
 //		this.cajeroService.realizarRetiro("12345", new BigDecimal("20.00"));
